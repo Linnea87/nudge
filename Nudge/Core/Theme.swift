@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Color {
+struct Theme {
 
     //==== Backgrounds =============================================
     
