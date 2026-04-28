@@ -1,0 +1,29 @@
+# macOS (Hidden system files)
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode (Personal settings and heavy build files)
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcbkptlist
+*.moved-aside
+*.xccheckout
+
+# Swift Package Manager (For external packages)
+.build/
+.swiftpm/
+
+# CocoaPods (Alternative system for external packages)
+Pods/
+
+# App files (Files created when building the finished app)
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Environment variables (For API keys in the future)
+.env
