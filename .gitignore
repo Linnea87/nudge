@@ -27,3 +27,6 @@ Pods/
 
 # Environment variables (For API keys in the future)
 .env
+
+# Firebase
+GoogleService-Info.plist
