@@ -25,7 +25,7 @@ class AuthViewModel {
 
     //==== Sign In =============================================
 
-    func signIn(email: String, password: String). async {
+    func signIn(email: String, password: String) async {
         isLoading = true
         errorMessage = nil
 
