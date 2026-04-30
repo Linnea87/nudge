@@ -13,21 +13,23 @@ class AuthViewModel {
 
     //==== State =============================================
 
-    var currentUser: User?
+    private(set) var currentUser: User?
+    private(set) var isLoading: Bool = false
     var errorMessage: String?
-    var isLoading: Bool = false
 
-    private let authService = FirebaseService()
+    private let authService: AuthServiceProtocol
     private var authListener: AuthStateDidChangeListenerHandle?
 
-    //==== Init ===========================================
+    //==== Init =============================================
 
-   init() {
-        setupAuthListener()
+    init(authService: AuthServiceProtocol = FirebaseService()) {
+        self.authService = authService
     }
-    
-    private func setupAuthListener() {
-        authListener = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+
+    //==== Bootstrap =============================================
+
+    func bootstrap() {
+        authListener = authService.addStateDidChangeListener { [weak self] user in
             Task { @MainActor in
                 self?.currentUser = user
             }
@@ -48,10 +50,10 @@ class AuthViewModel {
 
         isLoading = false
     }
-    
-     //==== Sign Up =============================================
 
-     func signUp(email: String, password: String) async {
+    //==== Sign Up =============================================
+
+    func signUp(email: String, password: String) async {
         isLoading = true
         errorMessage = nil
 
@@ -64,9 +66,9 @@ class AuthViewModel {
         isLoading = false
     }
 
-      //==== Sign Out =============================================
+    //==== Sign Out =============================================
 
-      func signOut() {
+    func signOut() {
         do {
             try authService.signOut()
         } catch {
