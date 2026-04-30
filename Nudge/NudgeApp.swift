@@ -10,6 +10,8 @@ import FirebaseCore
 
 @main
 struct NudgeApp: App {
+    
+    @State private var authViewModel = AuthViewModel()
 
     init() {
         FirebaseApp.configure()
@@ -17,7 +19,17 @@ struct NudgeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SignInView()
+            NavigationStack {
+                Group {
+                    if authViewModel.currentUser != nil {
+                        // Placeholder until main views are implemented
+                        Text(String(localized: "app_name"))
+                    } else {
+                        SignInView()
+                    }
+                }
+            }
+            .environment(authViewModel)
         }
     }
 }
