@@ -17,10 +17,21 @@ class AuthViewModel {
     var errorMessage: String?
     var isLoading: Bool = false
 
+    private let authService = FirebaseService()
+    private var authListener: AuthStateDidChangeListenerHandle?
+
     //==== Init ===========================================
 
-    init() {
-        self.currentUser = Auth.auth().currentUser
+   init() {
+        setupAuthListener()
+    }
+    
+    private func setupAuthListener() {
+        authListener = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            Task { @MainActor in
+                self?.currentUser = user
+            }
+        }
     }
 
     //==== Sign In =============================================
@@ -30,10 +41,9 @@ class AuthViewModel {
         errorMessage = nil
 
         do {
-            let result = try await Auth.auth().signIn(withEmail: email, password: password)
-            currentUser = result.user
-        } catch  {
-            errorMessage = error.localizedDescription
+            _ = try await authService.signIn(email: email, password: password)
+        } catch {
+            errorMessage = String(localized: "error_title")
         }
 
         isLoading = false
@@ -42,27 +52,25 @@ class AuthViewModel {
      //==== Sign Up =============================================
 
      func signUp(email: String, password: String) async {
-         isLoading = true
-         errorMessage = nil
+        isLoading = true
+        errorMessage = nil
 
-         do {
-             let result = try await Auth.auth().createUser(withEmail: email, password: password)
-             currentUser = result.user
-         } catch  {
-             errorMessage = error.localizedDescription
-         }
+        do {
+            _ = try await authService.signUp(email: email, password: password)
+        } catch {
+            errorMessage = String(localized: "error_save_failed")
+        }
 
-         isLoading = false
-     }
+        isLoading = false
+    }
 
       //==== Sign Out =============================================
 
       func signOut() {
-          do {
-              try Auth.auth().signOut()
-              currentUser = nil
-          } catch {
-              errorMessage = error.localizedDescription
-          }
-      }
+        do {
+            try authService.signOut()
+        } catch {
+            errorMessage = String(localized: "error_title")
+        }
+    }
 }
