@@ -11,22 +11,22 @@ struct Theme {
 
     //==== Backgrounds =============================================
     
-    static let nudgeBackground = Color("Colors/Background")
-    static let nudgeSurface = Color("Colors/Surface")
-    static let nudgeCard = Color("Colors/Card")
+    static let nudgeBackground = Color("Background")
+    static let nudgeSurface = Color("Surface")
+    static let nudgeCard = Color("Card")
 
     //==== Accent =============================================
     
-    static let nudgeAccent = Color("Colors/Accent")
-    static let nudgeAccentLight = Color("Colors/AccentLight")
-    static let nudgeAccentSoft = Color("Colors/AccentSoft")
+    static let nudgeAccent = Color("Accent")
+    static let nudgeAccentLight = Color("AccentLight")
+    static let nudgeAccentSoft = Color("AccentSoft")
 
     //==== Feedback =============================================
     
-    static let nudgeSuccess = Color("Colors/Success")
+    static let nudgeSuccess = Color("Success")
 
     //==== Text =============================================
     
-    static let nudgeTextPrimary = Color("Colors/TextPrimary")
-    static let nudgeTextMuted = Color("Colors/TextMuted")
+    static let nudgeTextPrimary = Color("TextPrimary")
+    static let nudgeTextMuted = Color("TextMuted")
 }
