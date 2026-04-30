@@ -16,6 +16,8 @@ enum Spacing {
     static let lg: CGFloat = 20
     static let xl: CGFloat = 24
     static let xxl: CGFloat = 32
+
+    static let buttonHeight: CGFloat = 56
 }
 
 // ====== Corner Radius ===============
@@ -47,4 +49,6 @@ enum IconSize {
     static let md: CGFloat = 20
     static let lg: CGFloat = 24
     static let xl: CGFloat = 32
+    
+    static let avatar: CGFloat = 72
 }
