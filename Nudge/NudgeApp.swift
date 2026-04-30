@@ -16,6 +16,7 @@ struct NudgeApp: App {
     init() {
         FirebaseApp.configure()
         _authViewModel = State(initialValue: AuthViewModel())
+
     }
 
     var body: some Scene {
