@@ -67,7 +67,7 @@
         }
       }
     },
-    "auth_signin_signup_link " : {
+    "auth_signin_signup_link" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -133,7 +133,7 @@
         }
       }
     },
-    "auth_signup_subtitle " : {
+    "auth_signup_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -166,7 +166,7 @@
         }
       }
     },
-    "error_empty_name " : {
+    "error_empty_name" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -276,7 +276,7 @@
         }
       }
     },
-    "motivation_1 " : {
+    "motivation_1" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -320,7 +320,7 @@
         }
       }
     },
-    "profile_member_since " : {
+    "profile_member_since" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
