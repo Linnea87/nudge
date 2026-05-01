@@ -1,0 +1,57 @@
+//
+//  HabitService.swift
+//  Nudge
+//
+//  Created by Linnéa on 2026-05-01.
+//
+
+Import Foundation
+import FirebaseFirestore
+
+final class HabitService: HabitServiceProtocol {
+
+    //==== Properties =============================================
+
+    private let db = Firestore.firestore()
+    private let collection = "habits"
+
+    //==== Fetch =============================================
+
+    func fetchHabits(for userId: String) async trhows -> [Habit] {
+        let snapshot = try await db.collection(collection)
+            .whereField("userId", isEqualTo: userId)
+            .getDDocuments()
+
+        return snapshot.documents.compactMap { document in
+            try? document.data(as: Habit.self)
+        }
+    }
+
+    //==== Add =============================================
+
+    func addHabit(_ habit: Habit) async throws {
+        try db.collection(collection)
+            .document(habit.id)
+            .setData(from: habit)
+    }
+
+    //==== Delete =============================================
+
+    func deleteHabit(_ habit: Habit) async throws {
+        try db.collection(collection)
+            .document(habit.id)
+            .delete()
+    }
+
+    //==== Check-In =============================================
+
+    func checkIn(_ habit: Habit, on date: Date) async throws {
+        let timestamp = Timestamp(date: date)
+        try await db.collection(collection)
+            .document(habit.id)
+            .updateData([
+                "completedDates": FieldValue.arrayUnion([timestamp])
+            ])
+    }
+
+}
