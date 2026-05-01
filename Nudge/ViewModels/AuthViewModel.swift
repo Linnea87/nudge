@@ -9,7 +9,7 @@ import Foundation
 import FirebaseAuth
 
 @Observable
-class AuthViewModel {
+final class AuthViewModel {
 
     //==== State =============================================
 
