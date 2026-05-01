@@ -22,7 +22,7 @@ class AuthViewModel {
 
     //==== Init =============================================
 
-    init(authService: AuthServiceProtocol = FirebaseService()) {
+    init(authService: AuthServiceProtocol = AuthService()) {
         self.authService = authService
     }
 
