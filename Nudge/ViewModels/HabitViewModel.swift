@@ -36,6 +36,15 @@ final class HabitViewModel {
         habits.reduce(0) { $0 + $1.completedDates.count }
     }
 
+    var motivationMessage: String {
+        let messages = [
+            String(localized: "motivation_1"),
+            String(localized: "motivation_2"),
+            String(localized: "motivation_3")
+        ]
+        return messages.[totalCheckIns % messages.count]
+    }
+
     //==== Fetch =============================================
 
     func fetchHabits(for userId: String) async {
