@@ -14,7 +14,7 @@ final class AuthService: AuthServiceProtocol {
         changeRequest.displayName = name
         try await changeRequest.commitChanges()
         try await result.user.reload()
-        return result.user
+        return Auth.auth().currentUser ?? result.user
     }   
 
     func signOut() throws {
