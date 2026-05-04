@@ -96,6 +96,16 @@ struct ProfileView: View {
             }
 
             Spacer()
+
+            Button {
+                authVM.signOut()
+            } label: {
+                Image(systemName: "rectangle.portrait.and.arrow.right")
+                    .font(.system(size: IconSize.md))
+                    .foregroundStyle(Theme.nudgeTextMuted)
+            }
+
+
         }
         .padding(Spacing.lg)
         .background(Theme.nudgeCard)
