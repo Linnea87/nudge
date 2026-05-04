@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct StatsView: View {
+    @Binding var selectedTab: Tab
+    
     var body: some View {
         Text("Stats")
     }

@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HabitsView: View {
+    @Binding var selectedTab: Tab
+    
     var body: some View {
         Text("Habits")
     }
