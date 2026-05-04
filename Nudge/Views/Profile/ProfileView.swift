@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ProfileView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-04-28.
@@ -23,9 +23,19 @@ struct ProfileView: View {
 
             ScrollView {
                 VStack(spacing: Spacing.lg) {
-                    heroCard
-                    motivationCard
-                    todayHeader
+                    HeroCard(
+                        displayName: authVM.displayName,
+                        userInitial: authVM.userInitial,
+                        totalCheckIns: habitVM.totalCheckIns,
+                        onSignOut: { authVM.signOut() }
+                    )
+
+                    MotivationCard(motivationMessage: habitVM.motivationMessage)
+
+                    TodayHeader(
+                        completedToday: habitVM.completedToday,
+                        habitCount: habitVM.habits.count
+                    )
 
                     VStack(spacing: Spacing.sm) {
                         ForEach(habitVM.habits) { habit in
@@ -50,43 +60,49 @@ struct ProfileView: View {
                 get: { habitVM.errorMessage != nil },
                 set: { if !$0 { habitVM.errorMessage = nil } }
             ),
-            presenting: habitVM.errorMessage      
+            presenting: habitVM.errorMessage
         ) { _ in
             Button(String(localized: "error_ok"), role: .cancel) { }
         } message: { errorMessage in
             Text(errorMessage)
         }
     }
+}
 
-    //==== Hero Card =============================================
+//==== HeroCard =============================================
 
-    private var heroCard: some View {
+private struct HeroCard: View {
+
+    let displayName: String
+    let userInitial: String
+    let totalCheckIns: Int
+    let onSignOut: () -> Void
+
+    var body: some View {
         HStack(spacing: Spacing.md) {
             ZStack {
                 Circle()
                     .fill(Theme.nudgeAccent)
                     .frame(width: IconSize.profileAvatar, height: IconSize.profileAvatar)
-
-                Text(authVM.userInitial)
+                Text(userInitial)
                     .font(.system(size: FontSize.lg, weight: .bold))
                     .foregroundStyle(Theme.nudgeTextPrimary)
             }
 
             VStack(alignment: .leading, spacing: Spacing.xs) {
-                Text(authVM.displayName)
+                Text(displayName)
                     .font(.system(size: FontSize.xl, weight: .bold))
                     .foregroundStyle(Theme.nudgeTextPrimary)
-                
+
                 Text(String(localized: "profile_member_since"))
                     .font(.system(size: FontSize.xs))
                     .foregroundStyle(Theme.nudgeTextMuted)
-                
+
                 HStack(spacing: Spacing.xs) {
                     Image(systemName: "bolt.fill")
                         .font(.system(size: IconSize.sm))
-                    Text("\(habitVM.totalCheckIns) \(String(localized: "profile_checkins_total"))")
+                    Text("\(totalCheckIns) \(String(localized: "profile_checkins_total"))")
                         .font(.system(size: FontSize.xs, weight: .semibold))
-                    
                 }
                 .foregroundStyle(Theme.nudgeTextPrimary)
                 .padding(.horizontal, Spacing.sm)
@@ -97,30 +113,30 @@ struct ProfileView: View {
 
             Spacer()
 
-            Button {
-                authVM.signOut()
-            } label: {
+            Button(action: onSignOut) {
                 Image(systemName: "rectangle.portrait.and.arrow.right")
                     .font(.system(size: IconSize.md))
                     .foregroundStyle(Theme.nudgeTextMuted)
             }
-
-
         }
         .padding(Spacing.lg)
         .background(Theme.nudgeCard)
         .clipShape(RoundedRectangle(cornerRadius: Radius.xl))
     }
+}
 
-    //==== Motivation Card =============================================
+//==== MotivationCard =============================================
 
-    private var motivationCard: some View {
+private struct MotivationCard: View {
+
+    let motivationMessage: String
+
+    var body: some View {
         HStack(spacing: Spacing.sm) {
             Image(systemName: "sparkles")
                 .font(.system(size: IconSize.lg))
                 .foregroundStyle(Theme.nudgeAccentSoft)
-            
-            Text(habitVM.motivationMessage)
+            Text(motivationMessage)
                 .font(.system(size: FontSize.sm))
                 .foregroundStyle(Theme.nudgeAccentSoft)
             Spacer()
@@ -130,24 +146,24 @@ struct ProfileView: View {
         .background(Theme.nudgeSurface)
         .clipShape(RoundedRectangle(cornerRadius: Radius.md))
     }
+}
 
-    //==== Today Header =============================================
+//==== TodayHeader =============================================
 
-    private var todayHeader: some View {
+private struct TodayHeader: View {
+
+    let completedToday: Int
+    let habitCount: Int
+
+    var body: some View {
         HStack {
             Text(String(localized: "profile_today"))
                 .font(.system(size: FontSize.xl, weight: .bold))
                 .foregroundStyle(Theme.nudgeTextPrimary)
-
             Spacer()
-
-            Text("\(habitVM.completedToday) / \(habitVM.habits.count) done")
+            Text("\(completedToday) / \(habitCount) done")
                 .font(.system(size: FontSize.sm))
                 .foregroundStyle(Theme.nudgeSuccess)
         }
     }
-}
-
-#Preview {
-    ProfileView()
 }
