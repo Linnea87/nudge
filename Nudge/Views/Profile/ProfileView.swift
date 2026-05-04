@@ -82,7 +82,7 @@ struct ProfileView: View {
                     .foregroundStyle(Theme.nudgeTextMuted)
                 
                 HStack(spacing: Spacing.xs) {
-                    Image(systemName: "zap.fill")
+                    Image(systemName: "bolt.fill")
                         .font(.system(size: IconSize.sm))
                     Text("\(habitVM.totalCheckIns) \(String(localized: "profile_checkins_total"))")
                         .font(.system(size: FontSize.xs, weight: .semibold))
