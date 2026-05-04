@@ -53,7 +53,7 @@ final class AuthViewModel {
 
     //==== Sign Up =============================================
 
-    func signUp(email: String, password: String) async {
+    func signUp(email: String, password: String, name: String) async {
         isLoading = true
         errorMessage = nil
 
