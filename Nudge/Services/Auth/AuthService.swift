@@ -8,10 +8,13 @@ final class AuthService: AuthServiceProtocol {
         return result.user
     }
 
-    func signUp(email: String, password: String) async throws -> User {
+    func signUp(email: String, password: String, name: String) async throws -> User {
         let result = try await Auth.auth().createUser(withEmail: email, password: password)
+        let changeRequest = result.user.createProfileChangeRequest()
+        changeRequest.displayName = name
+        try await changeRequest.commitChanges()
         return result.user
-    }
+    }   
 
     func signOut() throws {
         try Auth.auth().signOut()

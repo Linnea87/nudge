@@ -58,7 +58,7 @@ final class AuthViewModel {
         errorMessage = nil
 
         do {
-            _ = try await authService.signUp(email: email, password: password)
+            _ = try await authService.signUp(email: email, password: password, name: name)
         } catch {
             errorMessage = String(localized: "error_save_failed")
         }
