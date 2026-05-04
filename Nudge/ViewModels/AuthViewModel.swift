@@ -75,4 +75,18 @@ final class AuthViewModel {
             errorMessage = String(localized: "error_title")
         }
     }
+    
+    //==== User Info =============================================
+
+    var displayName: String {
+        currentUser?.displayName ?? String(localized: "app_name")
+    }
+
+    var userInitial: String {
+        currentUser?.displayName?.prefix(1).uppercased().description ?? String(localized: "app_name").prefix(1).uppercased().description
+    }
+    
+    var userId: String? {
+        currentUser?.uid
+    }
 }

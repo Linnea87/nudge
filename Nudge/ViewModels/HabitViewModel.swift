@@ -22,7 +22,7 @@ final class HabitViewModel {
 
     //==== Init =============================================
 
-    init(habitService: HabitServiceProtocol = HabitService()) {
+    init(habitService: HabitServiceProtocol) {
         self.habitService = habitService
     }
 
