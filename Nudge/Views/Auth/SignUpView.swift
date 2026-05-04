@@ -80,7 +80,7 @@ struct SignUpView: View {
                 VStack(spacing: Spacing.md) {
                     Button {
                         Task {
-                            await vm.signUp(email: email, password: password)
+                            await vm.signUp(email: email, password: password, name: name)
                         }
                     } label: {
                         Group {
