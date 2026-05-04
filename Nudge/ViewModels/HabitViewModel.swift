@@ -26,6 +26,16 @@ final class HabitViewModel {
         self.habitService = habitService
     }
 
+    //==== Computed =============================================
+
+    var completedToday: Int {
+        habits.filter { $0.isCompletedToday }.count
+    }
+
+    var totalCheckIns: Int {
+        habits.reduce(0) { $0 + $1.completedDates.count }
+    }
+
     //==== Fetch =============================================
 
     func fetchHabits(for userId: String) async {
