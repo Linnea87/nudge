@@ -13,6 +13,7 @@ final class AuthService: AuthServiceProtocol {
         let changeRequest = result.user.createProfileChangeRequest()
         changeRequest.displayName = name
         try await changeRequest.commitChanges()
+        try await result.user.reload()
         return result.user
     }   
 
