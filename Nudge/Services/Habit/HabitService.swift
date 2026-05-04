@@ -5,7 +5,7 @@
 //  Created by Linnéa on 2026-05-01.
 //
 
-Import Foundation
+import Foundation
 import FirebaseFirestore
 
 final class HabitService: HabitServiceProtocol {
@@ -17,10 +17,10 @@ final class HabitService: HabitServiceProtocol {
 
     //==== Fetch =============================================
 
-    func fetchHabits(for userId: String) async trhows -> [Habit] {
+    func fetchHabits(for userId: String) async throws -> [Habit] {
         let snapshot = try await db.collection(collection)
             .whereField("userId", isEqualTo: userId)
-            .getDDocuments()
+            .getDocuments()
 
         return snapshot.documents.compactMap { document in
             try? document.data(as: Habit.self)
@@ -38,7 +38,7 @@ final class HabitService: HabitServiceProtocol {
     //==== Delete =============================================
 
     func deleteHabit(_ habit: Habit) async throws {
-        try db.collection(collection)
+        try await db.collection(collection)
             .document(habit.id)
             .delete()
     }

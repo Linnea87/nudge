@@ -42,7 +42,7 @@ final class HabitViewModel {
             String(localized: "motivation_2"),
             String(localized: "motivation_3")
         ]
-        return messages.[totalCheckIns % messages.count]
+        return messages[totalCheckIns % messages.count]
     }
 
     //==== Fetch =============================================

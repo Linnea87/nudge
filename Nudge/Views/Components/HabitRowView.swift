@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HabitRowView {
+struct HabitRowView : View{
 
     //==== Properties =============================================
 
@@ -24,7 +24,7 @@ struct HabitRowView {
             VStack(alignment: .leading, spacing: Spacing.xs) {
                 Text(habit.name)
                     .font(.system(size: FontSize.lg, weight: .semibold))
-                    .foregroundStyle(Theme.nudgePrimary)
+                    .foregroundStyle(Theme.nudgeTextPrimary)
 
                 Text("\(habit.completedDates.count) \(String(localized: "habits_sessions_total"))")
                     .font(.system(size: FontSize.sm))
