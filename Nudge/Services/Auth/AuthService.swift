@@ -1,7 +1,7 @@
 import Foundation
 import FirebaseAuth
 
-final class FirebaseService: AuthServiceProtocol {
+final class AuthService: AuthServiceProtocol {
 
     func signIn(email: String, password: String) async throws -> User {
         let result = try await Auth.auth().signIn(withEmail: email, password: password)

@@ -12,10 +12,13 @@ import FirebaseCore
 struct NudgeApp: App {
 
     @State private var authViewModel: AuthViewModel
+    @State private var habitViewModel: HabitViewModel
+
 
     init() {
         FirebaseApp.configure()
         _authViewModel = State(initialValue: AuthViewModel())
+        _habitViewModel = State(initialValue: HabitViewModel(habitService: HabitService()))
 
     }
 
@@ -23,7 +26,7 @@ struct NudgeApp: App {
         WindowGroup {
             Group {
                 if authViewModel.currentUser != nil {
-                    Text(String(localized: "app_name"))
+                    ProfileView()
                 } else {
                     NavigationStack {
                         SignInView()
@@ -31,6 +34,7 @@ struct NudgeApp: App {
                 }
             }
             .environment(authViewModel)
+            .environment(habitViewModel)
             .task {
                 authViewModel.bootstrap()
             }

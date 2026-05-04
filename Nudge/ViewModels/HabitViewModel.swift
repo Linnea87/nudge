@@ -22,8 +22,27 @@ final class HabitViewModel {
 
     //==== Init =============================================
 
-    init(habitService: HabitServiceProtocol = HabitService()) {
+    init(habitService: HabitServiceProtocol) {
         self.habitService = habitService
+    }
+
+    //==== Computed =============================================
+
+    var completedToday: Int {
+        habits.filter { $0.isCompletedToday }.count
+    }
+
+    var totalCheckIns: Int {
+        habits.reduce(0) { $0 + $1.completedDates.count }
+    }
+
+    var motivationMessage: String {
+        let messages = [
+            String(localized: "motivation_1"),
+            String(localized: "motivation_2"),
+            String(localized: "motivation_3")
+        ]
+        return messages[totalCheckIns % messages.count]
     }
 
     //==== Fetch =============================================

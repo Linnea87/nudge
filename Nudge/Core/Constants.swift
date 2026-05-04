@@ -49,6 +49,8 @@ enum IconSize {
     static let md: CGFloat = 20
     static let lg: CGFloat = 24
     static let xl: CGFloat = 32
-    
+
+    static let checkButton: CGFloat = 44
+    static let profileAvatar: CGFloat = 56
     static let avatar: CGFloat = 72
 }
