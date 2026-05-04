@@ -9,6 +9,10 @@ import SwiftUI
 
 struct ProfileView: View {
 
+    //==== Properties =============================================
+
+    @Binding var selectedTab: Tab
+
     //==== Environment =============================================
 
     @Environment(AuthViewModel.self) private var authVM
@@ -21,33 +25,37 @@ struct ProfileView: View {
             Theme.nudgeBackground
                 .ignoresSafeArea()
 
-            ScrollView {
-                VStack(spacing: Spacing.lg) {
-                    HeroCard(
-                        displayName: authVM.displayName,
-                        userInitial: authVM.userInitial,
-                        totalCheckIns: habitVM.totalCheckIns,
-                        onSignOut: { authVM.signOut() }
-                    )
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(spacing: Spacing.lg) {
+                        HeroCard(
+                            displayName: authVM.displayName,
+                            userInitial: authVM.userInitial,
+                            totalCheckIns: habitVM.totalCheckIns,
+                            onSignOut: { authVM.signOut() }
+                        )
 
-                    MotivationCard(motivationMessage: habitVM.motivationMessage)
+                        MotivationCard(motivationMessage: habitVM.motivationMessage)
 
-                    TodayHeader(
-                        completedToday: habitVM.completedToday,
-                        habitCount: habitVM.habits.count
-                    )
+                        TodayHeader(
+                            completedToday: habitVM.completedToday,
+                            habitCount: habitVM.habits.count
+                        )
 
-                    VStack(spacing: Spacing.sm) {
-                        ForEach(habitVM.habits) { habit in
-                            HabitRowView(habit: habit) {
-                                Task {
-                                    await habitVM.checkIn(habit)
+                        VStack(spacing: Spacing.sm) {
+                            ForEach(habitVM.habits) { habit in
+                                HabitRowView(habit: habit) {
+                                    Task {
+                                        await habitVM.checkIn(habit)
+                                    }
                                 }
                             }
                         }
                     }
+                    .padding(Spacing.lg)
                 }
-                .padding(Spacing.lg)
+
+                TabBarView(selectedTab: $selectedTab)
             }
         }
         .task {
