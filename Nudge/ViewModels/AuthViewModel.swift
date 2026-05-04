@@ -29,12 +29,15 @@ final class AuthViewModel {
     //==== Bootstrap =============================================
 
     func bootstrap() {
-        authListener = authService.addStateDidChangeListener { [weak self] user in
-            Task { @MainActor in
-                self?.currentUser = user
-            }
-        }
-    }
+          authListener = authService.addStateDidChangeListener { [weak self] user in
+              Task { @MainActor in
+                  guard let self else { return }
+                  if user == nil || user?.displayName != nil {
+                      self.currentUser = user
+                  }
+              }
+          }
+      }
 
     //==== Sign In =============================================
 
@@ -54,18 +57,18 @@ final class AuthViewModel {
     //==== Sign Up =============================================
 
     func signUp(email: String, password: String, name: String) async {
-        isLoading = true
-        errorMessage = nil
+           isLoading = true
+           errorMessage = nil
 
-        do {
-            _ = try await authService.signUp(email: email, password: password, name: name)
-        } catch {
-            errorMessage = String(localized: "error_save_failed")
-        }
+           do {
+               currentUser = try await authService.signUp(email: email, password: password, name: name)
+           } catch {
+               errorMessage = String(localized: "error_save_failed")
+           }
 
-        isLoading = false
+           isLoading = false
     }
-
+    
     //==== Sign Out =============================================
 
     func signOut() {
@@ -79,11 +82,11 @@ final class AuthViewModel {
     //==== User Info =============================================
 
     var displayName: String {
-        currentUser?.displayName ?? String(localized: "app_name")
+        currentUser?.displayName ?? ""
     }
 
     var userInitial: String {
-        currentUser?.displayName?.prefix(1).uppercased().description ?? String(localized: "app_name").prefix(1).uppercased().description
+        currentUser?.displayName?.prefix(1).uppercased().description ?? ""
     }
     
     var userId: String? {
