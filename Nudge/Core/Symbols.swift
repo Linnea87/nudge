@@ -13,10 +13,10 @@ enum Symbols {
 
         //==== Health & Body =============================================
 
-        "heart", "heart.fill", "lungs", "brain",
+        "heart", "lungs", "brain",
         "figure.walk", "figure.run", "figure.hiking",
         "figure.yoga", "figure.cooldown", "figure.strengthtraining.traditional",
-        "dumbbell", "bicycle", "figure.swimming",
+        "dumbbell", "bicycle", "figure.pool.swim",
 
         //==== Food & Drink =============================================
 
@@ -31,8 +31,8 @@ enum Symbols {
 
         //==== Learning & Creativity =============================================
 
-        "book", "book.fill", "pencil", "paintbrush",
-        "music.note", "guitars", "piano",
+        "book", "pencil", "paintbrush",
+        "music.note", "guitars", "pianokeys",
         "graduationcap", "newspaper",
 
         //==== Daily Life =============================================
