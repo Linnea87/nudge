@@ -101,8 +101,9 @@ private struct HabitManageRow: View {
     var body: some View {
         HStack(spacing: Spacing.md) {
             Image(systemName:habit.icon)
-                .font(.system(size: FontSize.md))
+                .font(.system(size: FontSize.lg))
                 .foregroundStyle(Theme.nudgeAccentLight)
+                .frame(width: IconSize.md, height: IconSize.md)
 
             VStack(alignment: .leading, spacing: Spacing.xs) {
                 Text(habit.name)
