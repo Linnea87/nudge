@@ -8,6 +8,42 @@
 import Foundation
 
 @Observable
-class StatsViewModel {
+final class StatsViewModel {
 
+    //==== Public =============================================
+
+    func totalCheckInsThisWeek(for habits: [Habit]) -> Int {
+        habits.reduce(0) { $0 + checkInsThisWeek(for: $1) }
+    }
+
+    func checkInsThisWeek(for habit: Habit) -> Int {
+        habit.completedDates.filter { isThisWeek($0) }.count
+    }
+
+    func checkInsPerDay(for habits: [Habit]) -> [DayStat] {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+
+        return (0..<7).compactMap { offset -> DayStat? in
+            guard let date = calendar.date(
+                byAdding: .day,
+                value: -6 + offset,
+                to: today
+            ) else { return nil }
+
+            let count = habits.reduce(0) { total, habit in
+                total + habit.completedDates.filter {
+                    calendar.isDate($0, inSameDayAs: date)
+                }.count
+            }
+
+            return DayStat(date: date, count: count)
+        }
+    }
+
+    //==== Private =============================================
+
+    private func isThisWeek(_ date: Date) -> Bool {
+        Calendar.current.isDate(date, equalTo: Date(), toGranularity: .weekOfYear)
+    }
 }
