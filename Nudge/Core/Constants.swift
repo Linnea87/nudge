@@ -20,6 +20,7 @@ enum Spacing {
 
     static let buttonHeight: CGFloat = 56
     static let tabBarHeight: CGFloat = 62
+    static let chartHeight: CGFloat = 120
 }
 
 // ====== Corner Radius ===============
