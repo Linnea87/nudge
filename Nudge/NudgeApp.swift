@@ -13,7 +13,8 @@ struct NudgeApp: App {
 
     @State private var authViewModel: AuthViewModel
     @State private var habitViewModel: HabitViewModel
-
+    @State private var statsViewModel = StatsViewModel()
+    
     init() {
         FirebaseApp.configure()
         _authViewModel = State(initialValue: AuthViewModel())
@@ -25,6 +26,7 @@ struct NudgeApp: App {
             AppNavigation()
                 .environment(authViewModel)
                 .environment(habitViewModel)
+                .environment(statsViewModel)
                 .task {
                     authViewModel.bootstrap()
                 }
