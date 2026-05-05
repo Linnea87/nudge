@@ -115,7 +115,11 @@ private struct WeeklyChart: View {
                     x: .value("Day", stat.weekdayLabel),
                     y: .value("Check-ins", stat.count)
                 )
-                .foregroundStyle(Theme.nudgeAccent)
+                .foregroundStyle(
+                    Calendar.current.isDateInToday(stat.date)
+                        ? Theme.nudgeSuccess
+                        : Theme.nudgeAccent
+                )
                 .cornerRadius(Radius.sm)
             }
             .frame(height: Spacing.chartHeight)
