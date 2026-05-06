@@ -1,5 +1,5 @@
 //
-//  AppNavigation.swift
+//  AppNavigationView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-04.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AppNavigation: View {
+struct AppNavigationView: View {
 
     @Environment(AuthViewModel.self) private var authVM
     @State private var selectedTab: Tab = .profile
