@@ -14,26 +14,14 @@ struct CategoryPickerView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.sm) {
-            Button {
+            PickerHeaderView(
+                label: selectedCategory.isEmpty
+                    ? String(localized: "habits_choose_category")
+                    : selectedCategory,
+                isExpanded: isExpanded
+            ) {
                 withAnimation {
                     isExpanded.toggle()
-                }
-            } label: {
-                PrimaryCardView {
-                    HStack {
-                        Text(selectedCategory.isEmpty
-                             ? String(localized: "habits_choose_category")
-                             : selectedCategory
-                        )
-                        .font(.system(size: FontSize.md))
-                        .foregroundStyle(selectedCategory.isEmpty ? Theme.nudgeTextMuted : Theme.nudgeTextPrimary)
-
-                        Spacer()
-
-                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                            .font(.system(size: FontSize.sm))
-                            .foregroundStyle(Theme.nudgeTextMuted)
-                    }
                 }
             }
 

@@ -16,31 +16,14 @@ struct IconPickerView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.sm) {
-            Button {
+            PickerHeaderView(
+                label: selectedIcon.isEmpty
+                    ? String(localized: "habits_choose_icon")
+                    : String(localized: "habits_change_icon"),
+                isExpanded: isExpanded
+            ) {
                 withAnimation {
                     isExpanded.toggle()
-                }
-            } label: {
-                PrimaryCardView {
-                    HStack {
-                        if !selectedIcon.isEmpty {
-                            Image(systemName: selectedIcon)
-                                .font(.system(size: IconSize.md))
-                                .foregroundStyle(Theme.nudgeAccentLight)
-                        }
-                        Text(selectedIcon.isEmpty
-                             ? String(localized: "habits_choose_icon")
-                             : String(localized: "habits_change_icon")
-                        )
-                        .font(.system(size: FontSize.md))
-                        .foregroundStyle(selectedIcon.isEmpty ? Theme.nudgeTextMuted : Theme.nudgeTextPrimary)
-
-                        Spacer()
-
-                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                            .font(.system(size: FontSize.sm))
-                            .foregroundStyle(Theme.nudgeTextMuted)
-                    }
                 }
             }
 
