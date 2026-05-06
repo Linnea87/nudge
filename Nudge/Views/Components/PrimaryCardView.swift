@@ -1,5 +1,5 @@
 //
-//  PrimaryCard.swift
+//  PrimaryCardView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PrimaryCard<Content: View>: View {
+struct PrimaryCardView<Content: View>: View {
 
     @ViewBuilder let content: () -> Content
 

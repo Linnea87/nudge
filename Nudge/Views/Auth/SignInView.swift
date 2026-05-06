@@ -51,12 +51,12 @@ struct SignInView: View {
                 //==== Form =============================================
 
                 VStack(spacing: Spacing.sm) {
-                    InputField(icon: "envelope", key: "auth_signin_email", text: $email)
+                    InputFieldView(icon: "envelope", key: "auth_signin_email", text: $email)
                         .keyboardType(.emailAddress)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
 
-                    InputField(icon: "lock", key: "auth_signin_password", text: $password, isSecure: true)
+                    InputFieldView(icon: "lock", key: "auth_signin_password", text: $password, isSecure: true)
 
                     HStack {
                         Spacer()
@@ -68,7 +68,7 @@ struct SignInView: View {
 
                 //==== Sign In Button =============================================
 
-                PrimaryButton(
+                PrimaryButtonView(
                     label: String(localized: "auth_signin_title"),
                     isLoading: authVM.isLoading
                 ) {

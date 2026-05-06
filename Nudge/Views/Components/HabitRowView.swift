@@ -18,7 +18,7 @@ struct HabitRowView: View {
     //==== Body =============================================
 
     var body: some View {
-        PrimaryCard {
+        PrimaryCardView {
             HStack(spacing: Spacing.md) {
 
                 //==== Icon =============================================

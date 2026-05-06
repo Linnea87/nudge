@@ -36,20 +36,20 @@ struct AddHabitView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
-                        PrimaryHeader(
+                        PrimaryHeaderView(
                             title: String(localized: "habits_title"),
                             subtitle: String(localized: "habits_add_placeholder"),
                             onDismiss: { dismiss() }
                         )
 
-                        NameField(text: $name)
+                        NameFieldView(text: $name)
 
-                        IconPicker(selectedIcon: $selectedIcon)
+                        IconPickerView(selectedIcon: $selectedIcon)
                     }
                     .padding(Spacing.lg)
                 }
 
-                PrimaryButton(
+                PrimaryButtonView(
                     label: String(localized: "habits_save"),
                     isDisabled: !isFormValid
                 ) {

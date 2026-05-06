@@ -1,5 +1,5 @@
 //
-//  PrimaryHeader.swift
+//  PrimaryHeaderView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PrimaryHeader: View {
+struct PrimaryHeaderView: View {
 
     let title: String
     var subtitle: String? = nil

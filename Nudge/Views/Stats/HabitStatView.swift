@@ -1,5 +1,5 @@
 //
-//  HabitStatRow.swift
+//  HabitStatView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct HabitStatRow: View {
+struct HabitStatView: View {
 
     let habit: Habit
     let count: Int
 
     var body: some View {
-        PrimaryCard {
+        PrimaryCardView {
             HStack(spacing: Spacing.md) {
                 Image(systemName: habit.icon)
                     .font(.system(size: IconSize.md))

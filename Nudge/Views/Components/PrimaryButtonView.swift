@@ -1,5 +1,5 @@
 //
-//  PrimaryButton.swift
+//  PrimaryButtonView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PrimaryButton: View {
+struct PrimaryButtonView: View {
 
     let label: String
     var isLoading: Bool = false

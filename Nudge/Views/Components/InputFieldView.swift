@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct InputField: View {
+struct InputFieldView: View {
     let icon: String
     let key: String.LocalizationValue
     @Binding var text: String

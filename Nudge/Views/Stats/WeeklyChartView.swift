@@ -1,5 +1,5 @@
 //
-//  WeeklyChart.swift
+//  WeeklyChartView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-04-28.
@@ -8,12 +8,12 @@
 import Charts
 import SwiftUI
 
-struct WeeklyChart: View {
+struct WeeklyChartView: View {
 
     let data: [DayStat]
 
     var body: some View {
-        PrimaryCard {
+        PrimaryCardView {
             VStack(alignment: .leading, spacing: Spacing.md) {
                 Text(String(localized: "stats_chart_title"))
                     .font(.system(size: FontSize.sm, weight: .semibold))

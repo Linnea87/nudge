@@ -1,5 +1,5 @@
 //
-//  AddHabitButton.swift
+//  AddHabitButtonView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddHabitButton: View {
+struct AddHabitButtonView: View {
 
     let action: () -> Void
 

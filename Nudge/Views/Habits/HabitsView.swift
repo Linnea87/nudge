@@ -32,7 +32,7 @@ struct HabitsView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
-                        PrimaryHeader(
+                        PrimaryHeaderView(
                             title: String(localized: "habits_title"),
                             subtitle: String(localized: "habits_subtitle")
                         )
@@ -47,7 +47,7 @@ struct HabitsView: View {
                             }
                         }
 
-                        AddHabitButton {
+                        AddHabitButtonView {
                             showAddHabit = true
                         }
                     }
