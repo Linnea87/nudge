@@ -1,5 +1,5 @@
 //
-//  HeroCard.swift
+//  HeroView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HeroCard: View {
+struct HeroView: View {
 
     let displayName: String
     let userInitial: String
@@ -15,7 +15,7 @@ struct HeroCard: View {
     let onSignOut: () -> Void
 
     var body: some View {
-        PrimaryCard {
+        PrimaryCardView {
             HStack(spacing: Spacing.md) {
                 ZStack {
                     Circle()

@@ -50,7 +50,7 @@ struct SignUpView: View {
                 //==== Form =============================================
 
                 VStack(spacing: Spacing.sm) {
-                    InputField(
+                    InputFieldView(
                         icon: "person",
                         key: "auth_signup_name",
                         text: $name
@@ -58,7 +58,7 @@ struct SignUpView: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.words)
 
-                    InputField(
+                    InputFieldView(
                         icon: "envelope",
                         key: "auth_signin_email",
                         text: $email
@@ -67,7 +67,7 @@ struct SignUpView: View {
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
 
-                    InputField(
+                    InputFieldView(
                         icon: "lock",
                         key: "auth_signin_password",
                         text: $password,
@@ -78,7 +78,7 @@ struct SignUpView: View {
                 //==== Create Account Button =============================================
 
                 VStack(spacing: Spacing.md) {
-                    PrimaryButton(
+                    PrimaryButtonView(
                         label: String(localized: "auth_signup_button"),
                         isLoading: authVM.isLoading
                     ) {

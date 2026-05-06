@@ -28,22 +28,22 @@ struct StatsView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
-                        PrimaryHeader(
+                        PrimaryHeaderView(
                             title: String(localized: "stats_title"),
                             subtitle: String(localized: "stats_this_week")
                         )
 
-                        TotalCard(
+                        TotalStatView(
                             total: statsVM.totalCheckInsThisWeek(for: habitVM.habits)
                         )
 
-                        WeeklyChart(
+                        WeeklyChartView(
                             data: statsVM.checkInsPerDay(for: habitVM.habits)
                         )
 
                         VStack(spacing: Spacing.sm) {
                             ForEach(habitVM.habits) { habit in
-                                HabitStatRow(
+                                HabitStatView(
                                     habit: habit,
                                     count: statsVM.checkInsThisWeek(for: habit)
                                 )

@@ -28,16 +28,16 @@ struct ProfileView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
-                        HeroCard(
+                        HeroView(
                             displayName: authVM.displayName,
                             userInitial: authVM.userInitial,
                             totalCheckIns: habitVM.totalCheckIns,
                             onSignOut: { authVM.signOut() }
                         )
 
-                        MotivationCard(motivationMessage: habitVM.motivationMessage)
+                        MotivationView(motivationMessage: habitVM.motivationMessage)
 
-                        PrimaryHeader(
+                        PrimaryHeaderView(
                             title: String(localized: "profile_today"),
                             trailingText: "\(habitVM.completedToday) / \(habitVM.habits.count) \(String(localized: "profile_done"))",
                             trailingColor: Theme.nudgeSuccess

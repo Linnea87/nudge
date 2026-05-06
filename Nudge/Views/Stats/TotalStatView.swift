@@ -1,5 +1,5 @@
 //
-//  TotalCard.swift
+//  TotalStatView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-04-28.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct TotalCard: View {
+struct TotalStatView: View {
 
     let total: Int
 
     var body: some View {
-        PrimaryCard {
+        PrimaryCardView {
             HStack {
                 VStack(alignment: .leading, spacing: Spacing.xs) {
                     Text(String(localized: "stats_total"))

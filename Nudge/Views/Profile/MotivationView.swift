@@ -1,5 +1,5 @@
 //
-//  MotivationCard.swift
+//  MotivationView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-04-28.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MotivationCard: View {
+struct MotivationView: View {
 
     let motivationMessage: String
 
     var body: some View {
-        PrimaryCard {
+        PrimaryCardView {
             HStack(spacing: Spacing.sm) {
                 Image(systemName: "sparkles")
                     .font(.system(size: IconSize.lg))

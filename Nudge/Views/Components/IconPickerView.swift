@@ -1,5 +1,5 @@
 //
-//  IconPicker.swift
+//  IconPickerView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct IconPicker: View {
+struct IconPickerView: View {
 
     @Binding var selectedIcon: String
 

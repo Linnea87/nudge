@@ -1,5 +1,5 @@
 //
-//  NameField.swift
+//  NameFieldView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-05-06.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NameField: View {
+struct NameFieldView: View {
 
     @Binding var text: String
 
