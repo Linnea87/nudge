@@ -31,51 +31,69 @@ struct HabitsView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: Spacing.none) {
-                ScrollView {
-                    VStack(spacing: Spacing.lg) {
-                        PrimaryHeaderView(
-                            title: String(localized: "habits_title"),
-                            subtitle: String(localized: "habits_subtitle")
-                        )
+                VStack(spacing: Spacing.lg) {
+                    PrimaryHeaderView(
+                        title: String(localized: "habits_title"),
+                        subtitle: String(localized: "habits_subtitle")
+                    )
+                }
+                .padding(Spacing.lg)
 
-                        ForEach(Categories.habitCategories, id: \.self) { category in
-                            let habits = habitVM.habitsByCategory[category] ?? []
-                            if !habits.isEmpty {
-                                VStack(alignment: .leading, spacing: Spacing.sm) {
-                                    Text(category)
-                                        .font(.system(size: FontSize.md, weight: .semibold))
-                                        .foregroundStyle(Theme.nudgeTextMuted)
-
-                                    ForEach(habits) { habit in
-                                        HabitRowView(habit: habit)
-                                            .swipeActions(edge: .trailing) {
-                                                Button(role: .destructive) {
-                                                    Task {
-                                                        await habitVM.deleteHabit(habit)
-                                                    }
-                                                } label: {
-                                                    Image(systemName: "trash")
+                List {
+                    ForEach(Categories.habitCategories, id: \.self) { category in
+                        let habits = habitVM.habitsByCategory[category] ?? []
+                        if !habits.isEmpty {
+                            Section {
+                                ForEach(habits) { habit in
+                                    HabitRowView(habit: habit)
+                                        .swipeActions(edge: .trailing) {
+                                            Button(role: .destructive) {
+                                                Task {
+                                                    await habitVM.deleteHabit(habit)
                                                 }
+                                            } label: {
+                                                Image(systemName: "trash")
                                             }
-                                            .swipeActions(edge: .leading) {
-                                                Button {
-                                                    habitToEdit = habit
-                                                } label: {
-                                                    Image(systemName: "pencil")
-                                                }
-                                                .tint(Theme.nudgeAccent)
+                                        }
+                                        .swipeActions(edge: .leading) {
+                                            Button {
+                                                habitToEdit = habit
+                                            } label: {
+                                                Image(systemName: "pencil")
                                             }
-                                    }
+                                            .tint(Theme.nudgeAccent)
+                                        }
+                                        .listRowBackground(Color.clear)
+                                        .listRowSeparator(.hidden)
+                                        .listRowInsets(EdgeInsets(
+                                            top: Spacing.xs,
+                                            leading: Spacing.none,
+                                            bottom: Spacing.xs,
+                                            trailing: Spacing.none
+                                        ))
                                 }
+                            } header: {
+                                Text(category)
+                                    .font(.system(size: FontSize.md, weight: .semibold))
+                                    .foregroundStyle(Theme.nudgeTextMuted)
                             }
                         }
-
-                        AddHabitButtonView {
-                            showAddHabit = true
-                        }
                     }
-                    .padding(Spacing.lg)
+
+                    AddHabitButtonView {
+                        showAddHabit = true
+                    }
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(
+                        top: Spacing.xs,
+                        leading: Spacing.none,
+                        bottom: Spacing.xs,
+                        trailing: Spacing.none
+                    ))
                 }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
 
                 TabBarView(selectedTab: $selectedTab)
             }
