@@ -392,6 +392,17 @@
         }
       }
     },
+    "profile_done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "done"
+          }
+        }
+      }
+    },
     "profile_member_since" : {
       "extractionState" : "manual",
       "localizations" : {

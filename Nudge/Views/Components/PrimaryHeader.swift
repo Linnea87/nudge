@@ -12,6 +12,8 @@ struct PrimaryHeader: View {
     let title: String
     var subtitle: String? = nil
     var onDismiss: (() -> Void)? = nil
+    var trailingText: String? = nil
+    var trailingColor: Color = Theme.nudgeTextMuted
 
     var body: some View {
         HStack(alignment: .top) {
@@ -28,6 +30,12 @@ struct PrimaryHeader: View {
             }
 
             Spacer()
+
+            if let trailingText {
+                Text(trailingText)
+                    .font(.system(size: FontSize.sm))
+                    .foregroundStyle(trailingColor)
+            }
 
             if let onDismiss {
                 Button(action: onDismiss) {

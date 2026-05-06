@@ -37,9 +37,10 @@ struct ProfileView: View {
 
                         MotivationCard(motivationMessage: habitVM.motivationMessage)
 
-                        TodayHeader(
-                            completedToday: habitVM.completedToday,
-                            habitCount: habitVM.habits.count
+                        PrimaryHeader(
+                            title: String(localized: "profile_today"),
+                            trailingText: "\(habitVM.completedToday) / \(habitVM.habits.count) \(String(localized: "profile_done"))",
+                            trailingColor: Theme.nudgeSuccess
                         )
 
                         VStack(spacing: Spacing.sm) {
