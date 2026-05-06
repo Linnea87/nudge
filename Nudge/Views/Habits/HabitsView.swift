@@ -34,7 +34,8 @@ struct HabitsView: View {
                 VStack(spacing: Spacing.lg) {
                     PrimaryHeaderView(
                         title: String(localized: "habits_title"),
-                        subtitle: String(localized: "habits_subtitle")
+                        subtitle: String(localized: "habits_subtitle"),
+                        onAdd: { showAddHabit = true }
                     )
                 }
                 .padding(Spacing.lg)
@@ -79,18 +80,6 @@ struct HabitsView: View {
                             }
                         }
                     }
-
-                    AddHabitButtonView {
-                        showAddHabit = true
-                    }
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(
-                        top: Spacing.xs,
-                        leading: Spacing.none,
-                        bottom: Spacing.xs,
-                        trailing: Spacing.none
-                    ))
                 }
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
