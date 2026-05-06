@@ -21,6 +21,7 @@ struct HabitsView: View {
     //==== State =============================================
 
     @State private var showAddHabit = false
+    @State private var habitToEdit: Habit? = nil
 
     //==== Body =============================================
 
@@ -46,11 +47,24 @@ struct HabitsView: View {
                                         .foregroundStyle(Theme.nudgeTextMuted)
 
                                     ForEach(habits) { habit in
-                                        HabitRowView(habit: habit, onCheckIn: {}) {
-                                            Task {
-                                                await habitVM.deleteHabit(habit)
+                                        HabitRowView(habit: habit, onCheckIn: {})
+                                            .swipeActions(edge: .trailing) {
+                                                Button(role: .destructive) {
+                                                    Task {
+                                                        await habitVM.deleteHabit(habit)
+                                                    }
+                                                } label: {
+                                                    Image(systemName: "trash")
+                                                }
                                             }
-                                        }
+                                            .swipeActions(edge: .leading) {
+                                                Button {
+                                                    habitToEdit = habit
+                                                } label: {
+                                                    Image(systemName: "pencil")
+                                                }
+                                                .tint(Theme.nudgeAccent)
+                                            }
                                     }
                                 }
                             }
@@ -67,7 +81,10 @@ struct HabitsView: View {
             }
         }
         .sheet(isPresented: $showAddHabit) {
-            AddHabitView()
+            HabitFormView()
+        }
+        .sheet(item: $habitToEdit) { habit in
+            HabitFormView(habit: habit)
         }
         .alert(
             String(localized: "error_title"),
