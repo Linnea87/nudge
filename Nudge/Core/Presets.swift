@@ -52,3 +52,13 @@ enum Symbols {
         "pawprint", "ant", "tortoise"
     ]
 }
+
+
+enum Categories {
+    static let habitCategories = [
+        "Fitness",
+        "Health",
+        "Mindfulness",
+        "Hobbies"
+    ]
+}
