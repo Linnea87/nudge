@@ -19,11 +19,14 @@ struct AddHabitView: View {
 
     @State private var name = ""
     @State private var selectedIcon = ""
+    @State private var selectedCategory = ""
 
     //==== Computed =============================================
 
     private var isFormValid: Bool {
-        !name.trimmingCharacters(in: .whitespaces).isEmpty && !selectedIcon.isEmpty
+        !name.trimmingCharacters(in: .whitespaces).isEmpty &&
+        !selectedIcon.isEmpty &&
+        !selectedCategory.isEmpty
     }
 
     //==== Body =============================================
@@ -44,6 +47,8 @@ struct AddHabitView: View {
 
                         NameFieldView(text: $name)
 
+                        CategoryPickerView(selectedCategory: $selectedCategory)
+
                         IconPickerView(selectedIcon: $selectedIcon)
                     }
                     .padding(Spacing.lg)
@@ -58,6 +63,7 @@ struct AddHabitView: View {
                         await habitVM.addHabit(
                             name: name,
                             icon: selectedIcon,
+                            category: selectedCategory,
                             userId: userId
                         )
                         if habitVM.errorMessage == nil {

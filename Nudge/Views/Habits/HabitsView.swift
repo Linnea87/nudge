@@ -37,11 +37,20 @@ struct HabitsView: View {
                             subtitle: String(localized: "habits_subtitle")
                         )
 
-                        VStack(spacing: Spacing.sm) {
-                            ForEach(habitVM.habits) { habit in
-                                HabitRowView(habit: habit, onCheckIn: {}) {
-                                    Task {
-                                        await habitVM.deleteHabit(habit)
+                        ForEach(Categories.habitCategories, id: \.self) { category in
+                            let habits = habitVM.habitsByCategory[category] ?? []
+                            if !habits.isEmpty {
+                                VStack(alignment: .leading, spacing: Spacing.sm) {
+                                    Text(category)
+                                        .font(.system(size: FontSize.md, weight: .semibold))
+                                        .foregroundStyle(Theme.nudgeTextMuted)
+
+                                    ForEach(habits) { habit in
+                                        HabitRowView(habit: habit, onCheckIn: {}) {
+                                            Task {
+                                                await habitVM.deleteHabit(habit)
+                                            }
+                                        }
                                     }
                                 }
                             }

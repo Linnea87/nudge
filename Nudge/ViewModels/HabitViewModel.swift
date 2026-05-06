@@ -44,6 +44,10 @@ final class HabitViewModel {
         ]
         return messages[totalCheckIns % messages.count]
     }
+    
+    var habitsByCategory: [String: [Habit]] {
+           Dictionary(grouping: habits, by: { $0.category })
+    }
 
     //==== Fetch =============================================
 
@@ -62,7 +66,7 @@ final class HabitViewModel {
    
    //==== Add =======================================
 
-   func addHabit(name: String, icon: String, userId: String) async {
+    func addHabit(name: String, icon: String, category: String, userId: String) async {
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty else {
             errorMessage = String(localized: "error_empty_name")
             return
@@ -73,6 +77,7 @@ final class HabitViewModel {
             userId: userId,
             name: name,
             icon: icon,
+            category: category,
             completedDates: [],
             createdAt: Date()
         )
