@@ -13,6 +13,7 @@ struct Habit: Identifiable, Codable {
     let userId: String
     var name: String
     var icon: String
+    var category: String
     var completedDates: [Date]
     var createdAt: Date
 }
