@@ -12,6 +12,7 @@ struct PrimaryHeaderView: View {
     let title: String
     var subtitle: String? = nil
     var onDismiss: (() -> Void)? = nil
+    var onAdd: (() -> Void)? = nil
     var trailingText: String? = nil
     var trailingColor: Color = Theme.nudgeTextMuted
 
@@ -35,6 +36,14 @@ struct PrimaryHeaderView: View {
                 Text(trailingText)
                     .font(.system(size: FontSize.sm))
                     .foregroundStyle(trailingColor)
+            }
+
+            if let onAdd {
+                Button(action: onAdd) {
+                    Image(systemName: "plus")
+                        .font(.system(size: IconSize.md))
+                        .foregroundStyle(Theme.nudgeTextMuted)
+                }
             }
 
             if let onDismiss {
