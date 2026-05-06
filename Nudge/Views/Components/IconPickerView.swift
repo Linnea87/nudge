@@ -2,9 +2,8 @@
 //  IconPickerView.swift
 //  Nudge
 //
-//  Created by Linnéa on 2026-05-06.
+//  Created by Linnéa on 2026-04-28.
 //
-
 
 import SwiftUI
 
@@ -22,28 +21,27 @@ struct IconPickerView: View {
                     isExpanded.toggle()
                 }
             } label: {
-                HStack {
-                    if !selectedIcon.isEmpty {
-                        Image(systemName: selectedIcon)
-                            .font(.system(size: IconSize.md))
-                            .foregroundStyle(Theme.nudgeAccentLight)
+                PrimaryCardView {
+                    HStack {
+                        if !selectedIcon.isEmpty {
+                            Image(systemName: selectedIcon)
+                                .font(.system(size: IconSize.md))
+                                .foregroundStyle(Theme.nudgeAccentLight)
+                        }
+                        Text(selectedIcon.isEmpty
+                             ? String(localized: "habits_choose_icon")
+                             : String(localized: "habits_change_icon")
+                        )
+                        .font(.system(size: FontSize.md))
+                        .foregroundStyle(selectedIcon.isEmpty ? Theme.nudgeTextMuted : Theme.nudgeTextPrimary)
+
+                        Spacer()
+
+                        Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                            .font(.system(size: FontSize.sm))
+                            .foregroundStyle(Theme.nudgeTextMuted)
                     }
-                    Text(selectedIcon.isEmpty
-                         ? String(localized: "habits_choose_icon")
-                         : String(localized: "habits_change_icon")
-                    )
-                    .font(.system(size: FontSize.md))
-                    .foregroundStyle(selectedIcon.isEmpty ? Theme.nudgeTextMuted : Theme.nudgeTextPrimary)
-
-                    Spacer()
-
-                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                        .font(.system(size: FontSize.sm))
-                        .foregroundStyle(Theme.nudgeTextMuted)
                 }
-                .padding(Spacing.md)
-                .background(Theme.nudgeCard)
-                .clipShape(RoundedRectangle(cornerRadius: Radius.lg))
             }
 
             if isExpanded {
