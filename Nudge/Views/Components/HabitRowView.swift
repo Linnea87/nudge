@@ -1,11 +1,12 @@
 import SwiftUI
 
-struct HabitRowView : View{
+struct HabitRowView: View {
 
     //==== Properties =============================================
 
     let habit: Habit
     let onCheckIn: () -> Void
+    var onDelete: (() -> Void)? = nil
 
     //==== Body =============================================
 
@@ -18,7 +19,7 @@ struct HabitRowView : View{
                 .font(.system(size: IconSize.md))
                 .foregroundStyle(Theme.nudgeAccentLight)
                 .frame(width: IconSize.md, height: IconSize.md)
-                
+
             //==== Text =============================================
 
             VStack(alignment: .leading, spacing: Spacing.xs) {
@@ -33,21 +34,28 @@ struct HabitRowView : View{
 
             Spacer()
 
-            //==== Check In Button =============================================
+            //==== Action Button =============================================
 
-            Button(action: onCheckIn) {
-                ZStack {
-                    Circle()
-                        .fill(habit.isCompletedToday ? Theme.nudgeSuccess : Theme.nudgeSurface)
-                        .frame(width: IconSize.checkButton, height: IconSize.checkButton)
-
-                    Image(systemName: habit.isCompletedToday ? "checkmark" : "circle.dashed")
+            if let onDelete {
+                Button(action: onDelete) {
+                    Image(systemName: "trash")
                         .font(.system(size: IconSize.md))
-                        .foregroundStyle(habit.isCompletedToday ? Theme.nudgeBackground : Theme.nudgeTextMuted)
+                        .foregroundStyle(Theme.nudgeTextMuted)
                 }
-        
+            } else {
+                Button(action: onCheckIn) {
+                    ZStack {
+                        Circle()
+                            .fill(habit.isCompletedToday ? Theme.nudgeSuccess : Theme.nudgeSurface)
+                            .frame(width: IconSize.checkButton, height: IconSize.checkButton)
+
+                        Image(systemName: habit.isCompletedToday ? "checkmark" : "circle.dashed")
+                            .font(.system(size: IconSize.md))
+                            .foregroundStyle(habit.isCompletedToday ? Theme.nudgeBackground : Theme.nudgeTextMuted)
+                    }
+                }
+                .disabled(habit.isCompletedToday)
             }
-            .disabled(habit.isCompletedToday)
         }
         .padding(Spacing.md)
         .background(Theme.nudgeCard)
