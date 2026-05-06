@@ -11,7 +11,7 @@ struct SignInView: View {
 
     //==== Environment =============================================
 
-    @Environment(AuthViewModel.self) private var vm
+    @Environment(AuthViewModel.self) private var authVM
 
     //==== State =============================================
 
@@ -68,25 +68,13 @@ struct SignInView: View {
 
                 //==== Sign In Button =============================================
 
-                Button {
+                PrimaryButton(
+                    label: String(localized: "auth_signin_title"),
+                    isLoading: authVM.isLoading
+                ) {
                     Task {
-                        await vm.signIn(email: email, password: password)
+                        await authVM.signIn(email: email, password: password)
                     }
-                } label: {
-                    Group {
-                        if vm.isLoading {
-                            ProgressView()
-                                .tint(Theme.nudgeTextPrimary)
-                        } else {
-                            Text(String(localized: "auth_signin_title"))
-                                .font(.system(size: FontSize.lg, weight: .bold))
-                                .foregroundStyle(Theme.nudgeTextPrimary)
-                        }
-                    }
-                    .frame(maxWidth: .infinity)
-                    .frame(height: Spacing.buttonHeight)
-                    .background(Theme.nudgeAccent)
-                    .clipShape(RoundedRectangle(cornerRadius: Radius.full))
                 }
 
                 Spacer()
@@ -110,10 +98,10 @@ struct SignInView: View {
         .alert(
             String(localized: "error_title"),
             isPresented: Binding(
-                get: { vm.errorMessage != nil },
-                set: { if !$0 { vm.errorMessage = nil } }
+                get: { authVM.errorMessage != nil },
+                set: { if !$0 { authVM.errorMessage = nil } }
             ),
-            presenting: vm.errorMessage
+            presenting: authVM.errorMessage
         ) { _ in
             Button(String(localized: "error_ok"), role: .cancel) { }
         } message: { message in

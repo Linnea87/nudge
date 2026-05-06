@@ -36,9 +36,11 @@ struct AddHabitView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
-                        AddHabitHeader {
-                            dismiss()
-                        }
+                        PrimaryHeader(
+                            title: String(localized: "habits_title"),
+                            subtitle: String(localized: "habits_add_placeholder"),
+                            onDismiss: { dismiss() }
+                        )
 
                         NameField(text: $name)
 
@@ -47,7 +49,10 @@ struct AddHabitView: View {
                     .padding(Spacing.lg)
                 }
 
-                SaveButton(isDisabled: !isFormValid) {
+                PrimaryButton(
+                    label: String(localized: "habits_save"),
+                    isDisabled: !isFormValid
+                ) {
                     Task {
                         guard let userId = authVM.userId else { return }
                         await habitVM.addHabit(

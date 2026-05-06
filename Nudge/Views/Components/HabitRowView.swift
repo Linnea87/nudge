@@ -1,3 +1,10 @@
+//
+//  HabitRowView.swift
+//  Nudge
+//
+//  Created by Linnéa on 2026-04-28.
+//
+
 import SwiftUI
 
 struct HabitRowView: View {
@@ -11,54 +18,53 @@ struct HabitRowView: View {
     //==== Body =============================================
 
     var body: some View {
-        HStack(spacing: Spacing.md) {
+        PrimaryCard {
+            HStack(spacing: Spacing.md) {
 
-            //==== Icon =============================================
+                //==== Icon =============================================
 
-            Image(systemName: habit.icon)
-                .font(.system(size: IconSize.md))
-                .foregroundStyle(Theme.nudgeAccentLight)
-                .frame(width: IconSize.md, height: IconSize.md)
+                Image(systemName: habit.icon)
+                    .font(.system(size: IconSize.md))
+                    .foregroundStyle(Theme.nudgeAccentLight)
+                    .frame(width: IconSize.md, height: IconSize.md)
 
-            //==== Text =============================================
+                //==== Text =============================================
 
-            VStack(alignment: .leading, spacing: Spacing.xs) {
-                Text(habit.name)
-                    .font(.system(size: FontSize.lg, weight: .semibold))
-                    .foregroundStyle(Theme.nudgeTextPrimary)
+                VStack(alignment: .leading, spacing: Spacing.xs) {
+                    Text(habit.name)
+                        .font(.system(size: FontSize.lg, weight: .semibold))
+                        .foregroundStyle(Theme.nudgeTextPrimary)
 
-                Text("\(habit.completedDates.count) \(String(localized: "habits_sessions_total"))")
-                    .font(.system(size: FontSize.sm))
-                    .foregroundStyle(Theme.nudgeTextMuted)
-            }
-
-            Spacer()
-
-            //==== Action Button =============================================
-
-            if let onDelete {
-                Button(action: onDelete) {
-                    Image(systemName: "trash")
-                        .font(.system(size: IconSize.md))
+                    Text("\(habit.completedDates.count) \(String(localized: "habits_sessions_total"))")
+                        .font(.system(size: FontSize.sm))
                         .foregroundStyle(Theme.nudgeTextMuted)
                 }
-            } else {
-                Button(action: onCheckIn) {
-                    ZStack {
-                        Circle()
-                            .fill(habit.isCompletedToday ? Theme.nudgeSuccess : Theme.nudgeSurface)
-                            .frame(width: IconSize.checkButton, height: IconSize.checkButton)
 
-                        Image(systemName: habit.isCompletedToday ? "checkmark" : "circle.dashed")
+                Spacer()
+
+                //==== Action Button =============================================
+
+                if let onDelete {
+                    Button(action: onDelete) {
+                        Image(systemName: "trash")
                             .font(.system(size: IconSize.md))
-                            .foregroundStyle(habit.isCompletedToday ? Theme.nudgeBackground : Theme.nudgeTextMuted)
+                            .foregroundStyle(Theme.nudgeTextMuted)
                     }
+                } else {
+                    Button(action: onCheckIn) {
+                        ZStack {
+                            Circle()
+                                .fill(habit.isCompletedToday ? Theme.nudgeSuccess : Theme.nudgeSurface)
+                                .frame(width: IconSize.checkButton, height: IconSize.checkButton)
+
+                            Image(systemName: habit.isCompletedToday ? "checkmark" : "circle.dashed")
+                                .font(.system(size: IconSize.md))
+                                .foregroundStyle(habit.isCompletedToday ? Theme.nudgeBackground : Theme.nudgeTextMuted)
+                        }
+                    }
+                    .disabled(habit.isCompletedToday)
                 }
-                .disabled(habit.isCompletedToday)
             }
         }
-        .padding(Spacing.md)
-        .background(Theme.nudgeCard)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.lg))
     }
 }
