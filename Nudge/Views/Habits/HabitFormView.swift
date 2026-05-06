@@ -1,5 +1,5 @@
 //
-//  AddHabitView.swift
+//  HabitFormView.swift
 //  Nudge
 //
 //  Created by Linnéa on 2026-04-28.
@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-struct AddHabitView: View {
+struct HabitFormView: View {
+
+    //==== Properties =============================================
+
+    var habit: Habit? = nil
 
     //==== Environment =============================================
 
@@ -22,6 +26,8 @@ struct AddHabitView: View {
     @State private var selectedCategory = ""
 
     //==== Computed =============================================
+
+    private var isEditing: Bool { habit != nil }
 
     private var isFormValid: Bool {
         !name.trimmingCharacters(in: .whitespaces).isEmpty &&
@@ -40,7 +46,7 @@ struct AddHabitView: View {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
                         PrimaryHeaderView(
-                            title: String(localized: "habits_title"),
+                            title: String(localized: isEditing ? "habits_edit_title" : "habits_title"),
                             subtitle: String(localized: "habits_add_placeholder"),
                             onDismiss: { dismiss() }
                         )
@@ -55,23 +61,38 @@ struct AddHabitView: View {
                 }
 
                 PrimaryButtonView(
-                    label: String(localized: "habits_save"),
+                    label: String(localized: isEditing ? "habits_save_changes" : "habits_save"),
                     isDisabled: !isFormValid
                 ) {
                     Task {
-                        guard let userId = authVM.userId else { return }
-                        await habitVM.addHabit(
-                            name: name,
-                            icon: selectedIcon,
-                            category: selectedCategory,
-                            userId: userId
-                        )
+                        if isEditing {
+                            guard var updatedHabit = habit else { return }
+                            updatedHabit.name = name
+                            updatedHabit.icon = selectedIcon
+                            updatedHabit.category = selectedCategory
+                            await habitVM.updateHabit(updatedHabit)
+                        } else {
+                            guard let userId = authVM.userId else { return }
+                            await habitVM.addHabit(
+                                name: name,
+                                icon: selectedIcon,
+                                category: selectedCategory,
+                                userId: userId
+                            )
+                        }
                         if habitVM.errorMessage == nil {
                             dismiss()
                         }
                     }
                 }
                 .padding(Spacing.lg)
+            }
+        }
+        .onAppear {
+            if let habit {
+                name = habit.name
+                selectedIcon = habit.icon
+                selectedCategory = habit.category
             }
         }
         .alert(

@@ -89,6 +89,19 @@ final class HabitViewModel {
             errorMessage = String(localized: "error_save_failed")
         }
    }
+    
+    //==== Update =============================================
+
+    func updateHabit(_ habit: Habit) async {
+        do {
+            try await habitService.updateHabit(habit)
+            if let index = habits.firstIndex(where: { $0.id == habit.id }) {
+                habits[index] = habit
+            }
+        } catch {
+            errorMessage = String(localized: "error_save_failed")
+        }
+    }
 
    //==== Delete =============================================
 

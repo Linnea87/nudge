@@ -34,6 +34,14 @@ final class HabitService: HabitServiceProtocol {
             .document(habit.id)
             .setData(from: habit)
     }
+    
+    //==== Update =============================================
+
+    func updateHabit(_ habit: Habit) async throws {
+        try db.collection(collection)
+            .document(habit.id)
+            .setData(from: habit, merge: true)
+    }
 
     //==== Delete =============================================
 
