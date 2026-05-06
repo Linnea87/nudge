@@ -36,9 +36,11 @@ struct AddHabitView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
-                        AddHabitHeader {
-                            dismiss()
-                        }
+                        PrimaryHeader(
+                            title: String(localized: "habits_title"),
+                            subtitle: String(localized: "habits_add_placeholder"),
+                            onDismiss: { dismiss() }
+                        )
 
                         NameField(text: $name)
 
