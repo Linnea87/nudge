@@ -23,19 +23,20 @@ struct IconPickerView: View {
                 }
             } label: {
                 HStack {
-                    if selectedIcon.isEmpty {
-                        Text(String(localized: "habits_choose_icon"))
-                            .font(.system(size: FontSize.md))
-                            .foregroundStyle(Theme.nudgeTextMuted)
-                    } else {
+                    if !selectedIcon.isEmpty {
                         Image(systemName: selectedIcon)
                             .font(.system(size: IconSize.md))
                             .foregroundStyle(Theme.nudgeAccentLight)
-                        Text(String(localized: "habits_choose_icon"))
-                            .font(.system(size: FontSize.md))
-                            .foregroundStyle(Theme.nudgeTextMuted)
                     }
+                    Text(selectedIcon.isEmpty
+                         ? String(localized: "habits_choose_icon")
+                         : String(localized: "habits_change_icon")
+                    )
+                    .font(.system(size: FontSize.md))
+                    .foregroundStyle(selectedIcon.isEmpty ? Theme.nudgeTextMuted : Theme.nudgeTextPrimary)
+
                     Spacer()
+
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.system(size: FontSize.sm))
                         .foregroundStyle(Theme.nudgeTextMuted)

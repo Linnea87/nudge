@@ -248,6 +248,17 @@
         }
       }
     },
+    "habits_change_icon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change icon"
+          }
+        }
+      }
+    },
     "habits_choose_category" : {
       "extractionState" : "manual",
       "localizations" : {
