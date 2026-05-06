@@ -23,7 +23,7 @@ struct NudgeApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppNavigation()
+            AppNavigationView()
                 .environment(authViewModel)
                 .environment(habitViewModel)
                 .environment(statsViewModel)
