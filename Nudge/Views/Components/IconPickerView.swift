@@ -20,7 +20,8 @@ struct IconPickerView: View {
                 label: selectedIcon.isEmpty
                     ? String(localized: "habits_choose_icon")
                     : String(localized: "habits_change_icon"),
-                isExpanded: isExpanded
+                isExpanded: isExpanded,
+                leadingIcon: selectedIcon.isEmpty ? nil : selectedIcon
             ) {
                 withAnimation {
                     isExpanded.toggle()
