@@ -25,7 +25,7 @@ struct ProfileView: View {
             Theme.nudgeBackground
                 .ignoresSafeArea()
 
-            VStack(spacing: 0) {
+            VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
                         HeroCard(
@@ -73,105 +73,6 @@ struct ProfileView: View {
             Button(String(localized: "error_ok"), role: .cancel) { }
         } message: { errorMessage in
             Text(errorMessage)
-        }
-    }
-}
-
-//==== HeroCard =============================================
-
-private struct HeroCard: View {
-
-    let displayName: String
-    let userInitial: String
-    let totalCheckIns: Int
-    let onSignOut: () -> Void
-
-    var body: some View {
-        HStack(spacing: Spacing.md) {
-            ZStack {
-                Circle()
-                    .fill(Theme.nudgeAccent)
-                    .frame(width: IconSize.profileAvatar, height: IconSize.profileAvatar)
-                Text(userInitial)
-                    .font(.system(size: FontSize.lg, weight: .bold))
-                    .foregroundStyle(Theme.nudgeTextPrimary)
-            }
-
-            VStack(alignment: .leading, spacing: Spacing.xs) {
-                Text(displayName)
-                    .font(.system(size: FontSize.xl, weight: .bold))
-                    .foregroundStyle(Theme.nudgeTextPrimary)
-
-                Text(String(localized: "profile_member_since"))
-                    .font(.system(size: FontSize.xs))
-                    .foregroundStyle(Theme.nudgeTextMuted)
-
-                HStack(spacing: Spacing.xs) {
-                    Image(systemName: "bolt.fill")
-                        .font(.system(size: IconSize.sm))
-                    Text("\(totalCheckIns) \(String(localized: "profile_checkins_total"))")
-                        .font(.system(size: FontSize.xs, weight: .semibold))
-                }
-                .foregroundStyle(Theme.nudgeTextPrimary)
-                .padding(.horizontal, Spacing.sm)
-                .padding(.vertical, Spacing.xs)
-                .background(Theme.nudgeAccent)
-                .clipShape(Capsule())
-            }
-
-            Spacer()
-
-            Button(action: onSignOut) {
-                Image(systemName: "rectangle.portrait.and.arrow.right")
-                    .font(.system(size: IconSize.md))
-                    .foregroundStyle(Theme.nudgeTextMuted)
-            }
-        }
-        .padding(Spacing.lg)
-        .background(Theme.nudgeCard)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.xl))
-    }
-}
-
-//==== MotivationCard =============================================
-
-private struct MotivationCard: View {
-
-    let motivationMessage: String
-
-    var body: some View {
-        HStack(spacing: Spacing.sm) {
-            Image(systemName: "sparkles")
-                .font(.system(size: IconSize.lg))
-                .foregroundStyle(Theme.nudgeAccentSoft)
-            Text(motivationMessage)
-                .font(.system(size: FontSize.sm))
-                .foregroundStyle(Theme.nudgeAccentSoft)
-            Spacer()
-        }
-        .padding(.horizontal, Spacing.lg)
-        .padding(.vertical, Spacing.md)
-        .background(Theme.nudgeSurface)
-        .clipShape(RoundedRectangle(cornerRadius: Radius.md))
-    }
-}
-
-//==== TodayHeader =============================================
-
-private struct TodayHeader: View {
-
-    let completedToday: Int
-    let habitCount: Int
-
-    var body: some View {
-        HStack {
-            Text(String(localized: "profile_today"))
-                .font(.system(size: FontSize.xl, weight: .bold))
-                .foregroundStyle(Theme.nudgeTextPrimary)
-            Spacer()
-            Text("\(completedToday) / \(habitCount) done")
-                .font(.system(size: FontSize.sm))
-                .foregroundStyle(Theme.nudgeSuccess)
         }
     }
 }
