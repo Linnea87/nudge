@@ -11,7 +11,7 @@ struct SignUpView: View {
 
     //==== Environment =============================================
 
-    @Environment(AuthViewModel.self) private var vm
+    @Environment(AuthViewModel.self) private var authVM
 
     //==== State =============================================
 
@@ -34,12 +34,12 @@ struct SignUpView: View {
                     Text(String(localized: "auth_signup_title"))
                         .font(.system(size: FontSize.display, weight: .bold))
                         .foregroundStyle(Theme.nudgeTextPrimary)
-                    
+
                     HStack(spacing: Spacing.xs) {
                         Text(String(localized: "auth_signup_subtitle"))
                             .font(.system(size: FontSize.md))
                             .foregroundStyle(Theme.nudgeTextMuted)
-                    
+
                         Image(systemName: "heart.fill")
                             .font(.system(size: FontSize.md))
                             .foregroundStyle(Theme.nudgeAccentSoft)
@@ -78,30 +78,13 @@ struct SignUpView: View {
                 //==== Create Account Button =============================================
 
                 VStack(spacing: Spacing.md) {
-                    Button {
+                    PrimaryButton(
+                        label: String(localized: "auth_signup_button"),
+                        isLoading: authVM.isLoading
+                    ) {
                         Task {
-                            await vm.signUp(email: email, password: password, name: name)
+                            await authVM.signUp(email: email, password: password, name: name)
                         }
-                    } label: {
-                        Group {
-                            if vm.isLoading {
-                                ProgressView()
-                                    .tint(Theme.nudgeTextPrimary)
-                            } else {
-                                Text(String(localized: "auth_signup_button"))
-                                    .font(
-                                        .system(
-                                            size: FontSize.lg,
-                                            weight: .bold
-                                        )
-                                    )
-                                    .foregroundStyle(Theme.nudgeTextPrimary)
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: Spacing.buttonHeight)
-                        .background(Theme.nudgeAccent)
-                        .clipShape(RoundedRectangle(cornerRadius: Radius.full))
                     }
 
                     Text(String(localized: "auth_signup_terms"))
@@ -118,12 +101,12 @@ struct SignUpView: View {
         .alert(
             String(localized: "error_title"),
             isPresented: Binding(
-                get: { vm.errorMessage != nil },
-                set: { if !$0 { vm.errorMessage = nil } }
+                get: { authVM.errorMessage != nil },
+                set: { if !$0 { authVM.errorMessage = nil } }
             ),
-            presenting: vm.errorMessage
+            presenting: authVM.errorMessage
         ) { _ in
-            Button(String(localized: "error_ok"), role: .cancel) {}
+            Button(String(localized: "error_ok"), role: .cancel) { }
         } message: { message in
             Text(message)
         }
