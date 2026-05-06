@@ -47,7 +47,10 @@ struct AddHabitView: View {
                     .padding(Spacing.lg)
                 }
 
-                SaveButton(isDisabled: !isFormValid) {
+                PrimaryButton(
+                    label: String(localized: "habits_save"),
+                    isDisabled: !isFormValid
+                ) {
                     Task {
                         guard let userId = authVM.userId else { return }
                         await habitVM.addHabit(
