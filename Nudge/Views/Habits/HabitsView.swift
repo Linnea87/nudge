@@ -47,7 +47,7 @@ struct HabitsView: View {
                                         .foregroundStyle(Theme.nudgeTextMuted)
 
                                     ForEach(habits) { habit in
-                                        HabitRowView(habit: habit, onCheckIn: {})
+                                        HabitRowView(habit: habit)
                                             .swipeActions(edge: .trailing) {
                                                 Button(role: .destructive) {
                                                     Task {

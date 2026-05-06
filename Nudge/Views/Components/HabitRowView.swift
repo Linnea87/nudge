@@ -12,8 +12,7 @@ struct HabitRowView: View {
     //==== Properties =============================================
 
     let habit: Habit
-    let onCheckIn: () -> Void
-    var onDelete: (() -> Void)? = nil
+    var onCheckIn: (() -> Void)? = nil
 
     //==== Body =============================================
 
@@ -44,13 +43,7 @@ struct HabitRowView: View {
 
                 //==== Action Button =============================================
 
-                if let onDelete {
-                    Button(action: onDelete) {
-                        Image(systemName: "trash")
-                            .font(.system(size: IconSize.md))
-                            .foregroundStyle(Theme.nudgeTextMuted)
-                    }
-                } else {
+                if let onCheckIn {
                     Button(action: onCheckIn) {
                         ZStack {
                             Circle()
