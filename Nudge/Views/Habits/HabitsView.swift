@@ -32,7 +32,10 @@ struct HabitsView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
-                        HabitsHeader()
+                        PrimaryHeader(
+                            title: String(localized: "habits_title"),
+                            subtitle: String(localized: "habits_subtitle")
+                        )
 
                         VStack(spacing: Spacing.sm) {
                             ForEach(habitVM.habits) { habit in
