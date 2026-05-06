@@ -292,6 +292,17 @@
         }
       }
     },
+    "habits_edit_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit habit"
+          }
+        }
+      }
+    },
     "habits_name_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -310,6 +321,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Save habit"
+          }
+        }
+      }
+    },
+    "habits_save_changes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save changes"
           }
         }
       }
