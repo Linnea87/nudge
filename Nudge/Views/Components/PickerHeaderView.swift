@@ -1,0 +1,31 @@
+//
+//  PickerHeaderView.swift
+//  Nudge
+//
+//  Created by Linnéa on 2026-05-06.
+//
+
+import SwiftUI
+
+struct PickerHeaderView: View {
+
+    let label: String
+    let isExpanded: Bool
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            PrimaryCardView {
+                HStack {
+                    Text(label)
+                        .font(.system(size: FontSize.md))
+                        .foregroundStyle(Theme.nudgeTextMuted)
+                    Spacer()
+                    Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                        .font(.system(size: FontSize.sm))
+                        .foregroundStyle(Theme.nudgeTextMuted)
+                }
+            }
+        }
+    }
+}
