@@ -37,17 +37,20 @@ struct ProfileView: View {
 
                         MotivationView(motivationMessage: habitVM.motivationMessage)
 
-                        PrimaryHeaderView(
-                            title: String(localized: "profile_today"),
-                            trailingText: "\(habitVM.completedToday) / \(habitVM.habits.count) \(String(localized: "profile_done"))",
-                            trailingColor: Theme.nudgeSuccess
-                        )
+                        ForEach(Categories.habitCategories, id: \.self) { category in
+                            let habits = habitVM.habitsByCategory[category] ?? []
+                            if !habits.isEmpty {
+                                VStack(alignment: .leading, spacing: Spacing.sm) {
+                                    Text(category)
+                                        .font(.system(size: FontSize.md, weight: .semibold))
+                                        .foregroundStyle(Theme.nudgeTextMuted)
 
-                        VStack(spacing: Spacing.sm) {
-                            ForEach(habitVM.habits) { habit in
-                                HabitRowView(habit: habit) {
-                                    Task {
-                                        await habitVM.checkIn(habit)
+                                    ForEach(habits) { habit in
+                                        HabitRowView(habit: habit) {
+                                            Task {
+                                                await habitVM.checkIn(habit)
+                                            }
+                                        }
                                     }
                                 }
                             }
