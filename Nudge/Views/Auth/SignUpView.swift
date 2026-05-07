@@ -30,22 +30,10 @@ struct SignUpView: View {
 
                 //==== Header =============================================
 
-                VStack(alignment: .leading, spacing: Spacing.xs) {
-                    Text(String(localized: "auth_signup_title"))
-                        .font(.system(size: FontSize.display, weight: .bold))
-                        .foregroundStyle(Theme.nudgeTextPrimary)
-
-                    HStack(spacing: Spacing.xs) {
-                        Text(String(localized: "auth_signup_subtitle"))
-                            .font(.system(size: FontSize.md))
-                            .foregroundStyle(Theme.nudgeTextMuted)
-
-                        Image(systemName: "heart.fill")
-                            .font(.system(size: FontSize.md))
-                            .foregroundStyle(Theme.nudgeAccentSoft)
-                    }
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                PrimaryHeaderView(
+                    title: String(localized: "auth_signup_title"),
+                    subtitle: String(localized: "auth_signup_subtitle")
+                )
 
                 //==== Form =============================================
 

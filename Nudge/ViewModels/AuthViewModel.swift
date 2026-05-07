@@ -111,13 +111,4 @@ final class AuthViewModel {
         default: return String(localized: "greeting_evening")
         }
     }
-
-    var greetingIcon: String {
-        let hour = Calendar.current.component(.hour, from: Date())
-        switch hour {
-        case 5..<12: return "sun.min"
-        case 12..<18: return "sun.max"
-        default: return "moon.stars"
-        }
-    }
 }

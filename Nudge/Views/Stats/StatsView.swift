@@ -29,19 +29,14 @@ struct StatsView: View {
                 ScrollView {
                     VStack(spacing: Spacing.xl) {
 
-                        TotalStatView(
-                            total: statsVM.totalCheckInsThisWeek(for: habitVM.habits)
+                        PrimaryHeaderView(
+                            title: String(localized: "stats_title"),
+                            subtitle: statsVM.statsMessage(for: habitVM.habits)
                         )
 
-                        VStack(alignment: .leading, spacing: Spacing.sm) {
-                            Text(String(localized: "stats_chart_title"))
-                                .font(.system(size: FontSize.sm, weight: .semibold))
-                                .foregroundStyle(Theme.nudgeTextMuted)
-
-                            WeeklyChartView(
-                                data: statsVM.checkInsPerDay(for: habitVM.habits)
-                            )
-                        }
+                        WeeklyChartView(
+                            data: statsVM.checkInsPerDay(for: habitVM.habits)
+                        )
                         .padding(.top, Spacing.lg)
 
                         ForEach(Categories.habitCategories, id: \.self) { category in

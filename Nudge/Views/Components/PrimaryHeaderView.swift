@@ -10,7 +10,8 @@ import SwiftUI
 struct PrimaryHeaderView: View {
 
     let title: String
-    var subtitle: String? = nil
+    let subtitle: String
+    var subtitleIcon: String = "heart"
     var onDismiss: (() -> Void)? = nil
     var onAdd: (() -> Void)? = nil
     var trailingText: String? = nil
@@ -23,10 +24,13 @@ struct PrimaryHeaderView: View {
                     .font(.system(size: FontSize.display, weight: .bold))
                     .foregroundStyle(Theme.nudgeTextPrimary)
 
-                if let subtitle {
+                HStack(spacing: Spacing.xs) {
                     Text(subtitle)
                         .font(.system(size: FontSize.sm))
-                        .foregroundStyle(Theme.nudgeTextMuted)
+                        .foregroundStyle(Theme.nudgeAccentSoft)
+                    Image(systemName: subtitleIcon)
+                        .font(.system(size: FontSize.xs))
+                        .foregroundStyle(Theme.nudgeAccentSoft)
                 }
             }
 
