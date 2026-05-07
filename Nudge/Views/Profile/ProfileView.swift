@@ -26,45 +26,24 @@ struct ProfileView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: Spacing.none) {
-                ScrollView {
-                    VStack(spacing: Spacing.lg) {
+                HeroView(
+                    userInitial: authVM.userInitial,
+                    displayName: authVM.displayName,
+                    memberSince: authVM.memberSince,
+                    onSignOut: { authVM.signOut() }
+                )
+                .padding(Spacing.lg)
 
-                        HeroView(
-                            userInitial: authVM.userInitial,
-                            displayName: authVM.displayName,
-                            memberSince: authVM.memberSince,
-                            onSignOut: { authVM.signOut() }
-                        )
+                PrimaryHeaderView(
+                    title: authVM.greetingMessage,
+                    subtitle: habitVM.motivationMessage
+                )
+                .padding(.horizontal, Spacing.lg)
 
-                        PrimaryHeaderView(
-                            title: authVM.greetingMessage,
-                            subtitle: habitVM.motivationMessage
-                            
-                        )
-                        .padding(.top, Spacing.md)
-
-                        ForEach(Categories.habitCategories, id: \.self) { category in
-                            let habits = habitVM.habitsByCategory[category] ?? []
-                            if !habits.isEmpty {
-                                VStack(alignment: .leading, spacing: Spacing.sm) {
-                                    Text(category)
-                                        .font(.system(size: FontSize.md, weight: .semibold))
-                                        .foregroundStyle(Theme.nudgeTextMuted)
-                                        .padding(.top, Spacing.md)
-
-                                    ForEach(habits) { habit in
-                                        HabitRowView(habit: habit) {
-                                            Task {
-                                                await habitVM.checkIn(habit)
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding(Spacing.lg)
-                }
+                CategoryListView(
+                    habitsByCategory: habitVM.habitsByCategory,
+                    onCheckIn: { habit in Task { await habitVM.checkIn(habit) } }
+                )
 
                 TabBarView(selectedTab: $selectedTab)
             }

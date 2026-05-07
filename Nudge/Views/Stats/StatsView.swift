@@ -26,40 +26,22 @@ struct StatsView: View {
                 .ignoresSafeArea()
 
             VStack(spacing: Spacing.none) {
-                ScrollView {
-                    VStack(spacing: Spacing.xl) {
+                PrimaryHeaderView(
+                    title: String(localized: "stats_title"),
+                    subtitle: statsVM.statsMessage(for: habitVM.habits)
+                )
+                .padding(Spacing.lg)
+                .padding(.bottom, Spacing.lg)
 
-                        PrimaryHeaderView(
-                            title: String(localized: "stats_title"),
-                            subtitle: statsVM.statsMessage(for: habitVM.habits)
-                        )
+                WeeklyChartView(
+                    data: statsVM.checkInsPerDay(for: habitVM.habits)
+                )
+                .padding(Spacing.lg)
 
-                        WeeklyChartView(
-                            data: statsVM.checkInsPerDay(for: habitVM.habits)
-                        )
-                        .padding(.top, Spacing.lg)
-
-                        ForEach(Categories.habitCategories, id: \.self) { category in
-                            let habits = habitVM.habitsByCategory[category] ?? []
-                            if !habits.isEmpty {
-                                VStack(alignment: .leading, spacing: Spacing.sm) {
-                                    Text(category)
-                                        .font(.system(size: FontSize.md, weight: .semibold))
-                                        .foregroundStyle(Theme.nudgeTextMuted)
-
-                                    ForEach(habits) { habit in
-                                        HabitStatView(
-                                            habit: habit,
-                                            count: statsVM.checkInsThisWeek(for: habit)
-                                        )
-                                    }
-                                }
-                            }
-                        }
-                        .padding(.top, Spacing.xl)
-                    }
-                    .padding(Spacing.lg)
-                }
+                CategoryListView(
+                    habitsByCategory: habitVM.habitsByCategory,
+                    statsVM: statsVM
+                )
 
                 TabBarView(selectedTab: $selectedTab)
             }
