@@ -31,11 +31,8 @@ struct StatsView: View {
 
                         VStack(alignment: .leading, spacing: Spacing.xs) {
                             PrimaryHeaderView(
-                                title: String(localized: "stats_title")
-                            )
-
-                            TotalStatView(
-                                total: statsVM.totalCheckInsThisWeek(for: habitVM.habits)
+                                title: String(localized: "stats_title"),
+                                subtitle: statsVM.statsMessage(for: habitVM.habits)
                             )
                         }
 
