@@ -12,23 +12,23 @@ struct TotalStatView: View {
     let total: Int
 
     var body: some View {
-        PrimaryCardView {
-            HStack {
-                VStack(alignment: .leading, spacing: Spacing.xs) {
-                    Text(String(localized: "stats_total"))
-                        .font(.system(size: FontSize.sm))
-                        .foregroundStyle(Theme.nudgeAccentSoft)
-                    Text("\(total) \(String(localized: "stats_checkins"))")
-                        .font(.system(size: FontSize.xxl, weight: .bold))
-                        .foregroundStyle(Theme.nudgeTextPrimary)
-                }
+        VStack(alignment: .leading, spacing: Spacing.xs) {
+            Text(String(localized: "stats_title"))
+                .font(.system(size: FontSize.xxl, weight: .bold))
+                .foregroundStyle(Theme.nudgeTextPrimary)
 
-                Spacer()
-
-                Image(systemName: "bolt.fill")
-                    .font(.system(size: IconSize.xl))
-                    .foregroundStyle(Theme.nudgeAccentSoft)
+            HStack(spacing: Spacing.xs) {
+                Text(total > 0
+                    ? "\(total) \(String(localized: "stats_total"))"
+                    : String(localized: "stats_no_checkins")
+                )
+                .font(.system(size: FontSize.sm))
+                .foregroundStyle(Theme.nudgeTextMuted)
+                Image(systemName: "heart")
+                    .font(.system(size: FontSize.xs))
+                    .foregroundStyle(Theme.nudgeTextMuted)
             }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
