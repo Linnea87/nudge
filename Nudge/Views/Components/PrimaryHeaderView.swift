@@ -26,10 +26,10 @@ struct PrimaryHeaderView: View {
 
                 HStack(spacing: Spacing.xs) {
                     Text(subtitle)
-                        .font(.system(size: FontSize.sm))
+                        .font(.system(size: FontSize.md))
                         .foregroundStyle(Theme.nudgeAccentSoft)
                     Image(systemName: subtitleIcon)
-                        .font(.system(size: FontSize.xs))
+                        .font(.system(size: IconSize.xs))
                         .foregroundStyle(Theme.nudgeAccentSoft)
                 }
             }
