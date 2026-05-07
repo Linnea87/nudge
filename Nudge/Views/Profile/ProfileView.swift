@@ -28,14 +28,25 @@ struct ProfileView: View {
             VStack(spacing: Spacing.none) {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
+
                         HeroView(
-                            displayName: authVM.displayName,
                             userInitial: authVM.userInitial,
-                            totalCheckIns: habitVM.totalCheckIns,
+                            displayName: authVM.displayName,
+                            memberSince: authVM.memberSince,
                             onSignOut: { authVM.signOut() }
                         )
 
-                        MotivationView(motivationMessage: habitVM.motivationMessage)
+                        VStack(alignment: .leading, spacing: Spacing.xs) {
+                            Text(authVM.greetingMessage)
+                                .font(.system(size: FontSize.xxl, weight: .bold))
+                                .foregroundStyle(Theme.nudgeTextPrimary)
+
+                            Text(habitVM.motivationMessage)
+                                .font(.system(size: FontSize.sm))
+                                .foregroundStyle(Theme.nudgeAccentSoft)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.top, Spacing.md)
 
                         ForEach(Categories.habitCategories, id: \.self) { category in
                             let habits = habitVM.habitsByCategory[category] ?? []
@@ -44,6 +55,7 @@ struct ProfileView: View {
                                     Text(category)
                                         .font(.system(size: FontSize.md, weight: .semibold))
                                         .foregroundStyle(Theme.nudgeTextMuted)
+                                        .padding(.top, Spacing.md)
 
                                     ForEach(habits) { habit in
                                         HabitRowView(habit: habit) {
