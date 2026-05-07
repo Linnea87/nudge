@@ -27,28 +27,41 @@ struct StatsView: View {
 
             VStack(spacing: Spacing.none) {
                 ScrollView {
-                    VStack(spacing: Spacing.lg) {
-                        PrimaryHeaderView(
-                            title: String(localized: "stats_title"),
-                            subtitle: String(localized: "stats_this_week")
-                        )
+                    VStack(spacing: Spacing.xl) {
 
                         TotalStatView(
                             total: statsVM.totalCheckInsThisWeek(for: habitVM.habits)
                         )
 
-                        WeeklyChartView(
-                            data: statsVM.checkInsPerDay(for: habitVM.habits)
-                        )
+                        VStack(alignment: .leading, spacing: Spacing.sm) {
+                            Text(String(localized: "stats_chart_title"))
+                                .font(.system(size: FontSize.sm, weight: .semibold))
+                                .foregroundStyle(Theme.nudgeTextMuted)
 
-                        VStack(spacing: Spacing.sm) {
-                            ForEach(habitVM.habits) { habit in
-                                HabitStatView(
-                                    habit: habit,
-                                    count: statsVM.checkInsThisWeek(for: habit)
-                                )
+                            WeeklyChartView(
+                                data: statsVM.checkInsPerDay(for: habitVM.habits)
+                            )
+                        }
+                        .padding(.top, Spacing.lg)
+
+                        ForEach(Categories.habitCategories, id: \.self) { category in
+                            let habits = habitVM.habitsByCategory[category] ?? []
+                            if !habits.isEmpty {
+                                VStack(alignment: .leading, spacing: Spacing.sm) {
+                                    Text(category)
+                                        .font(.system(size: FontSize.md, weight: .semibold))
+                                        .foregroundStyle(Theme.nudgeTextMuted)
+
+                                    ForEach(habits) { habit in
+                                        HabitStatView(
+                                            habit: habit,
+                                            count: statsVM.checkInsThisWeek(for: habit)
+                                        )
+                                    }
+                                }
                             }
                         }
+                        .padding(.top, Spacing.xl)
                     }
                     .padding(Spacing.lg)
                 }
