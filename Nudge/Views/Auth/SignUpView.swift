@@ -32,8 +32,7 @@ struct SignUpView: View {
 
                 PrimaryHeaderView(
                     title: String(localized: "auth_signup_title"),
-                    subtitle: String(localized: "auth_signup_subtitle"),
-                    subtitleIcon: "heart"
+                    subtitle: String(localized: "auth_signup_subtitle")
                 )
 
                 //==== Form =============================================

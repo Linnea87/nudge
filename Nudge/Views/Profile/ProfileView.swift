@@ -38,7 +38,7 @@ struct ProfileView: View {
 
                         PrimaryHeaderView(
                             title: authVM.greetingMessage,
-                            subtitle: habitVM.motivationMessage,
+                            subtitle: habitVM.motivationMessage
                             
                         )
                         .padding(.top, Spacing.md)

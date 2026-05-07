@@ -35,7 +35,6 @@ struct HabitsView: View {
                     PrimaryHeaderView(
                         title: String(localized: "habits_title"),
                         subtitle: String(localized: "habits_subtitle"),
-                        subtitleIcon: "heart",
                         onAdd: { showAddHabit = true }
                     )
                 }
