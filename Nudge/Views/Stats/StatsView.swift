@@ -29,9 +29,15 @@ struct StatsView: View {
                 ScrollView {
                     VStack(spacing: Spacing.xl) {
 
-                        TotalStatView(
-                            total: statsVM.totalCheckInsThisWeek(for: habitVM.habits)
-                        )
+                        VStack(alignment: .leading, spacing: Spacing.xs) {
+                            PrimaryHeaderView(
+                                title: String(localized: "stats_title")
+                            )
+
+                            TotalStatView(
+                                total: statsVM.totalCheckInsThisWeek(for: habitVM.habits)
+                            )
+                        }
 
                         VStack(alignment: .leading, spacing: Spacing.sm) {
                             Text(String(localized: "stats_chart_title"))
