@@ -40,49 +40,11 @@ struct HabitsView: View {
                 }
                 .padding(Spacing.lg)
 
-                List {
-                    ForEach(Categories.habitCategories, id: \.self) { category in
-                        let habits = habitVM.habitsByCategory[category] ?? []
-                        if !habits.isEmpty {
-                            Section {
-                                ForEach(habits) { habit in
-                                    HabitRowView(habit: habit)
-                                        .swipeActions(edge: .trailing) {
-                                            Button(role: .destructive) {
-                                                Task {
-                                                    await habitVM.deleteHabit(habit)
-                                                }
-                                            } label: {
-                                                Image(systemName: "trash")
-                                            }
-                                        }
-                                        .swipeActions(edge: .leading) {
-                                            Button {
-                                                habitToEdit = habit
-                                            } label: {
-                                                Image(systemName: "pencil")
-                                            }
-                                            .tint(Theme.nudgeAccent)
-                                        }
-                                        .listRowBackground(Color.clear)
-                                        .listRowSeparator(.hidden)
-                                        .listRowInsets(EdgeInsets(
-                                            top: Spacing.xs,
-                                            leading: Spacing.none,
-                                            bottom: Spacing.xs,
-                                            trailing: Spacing.none
-                                        ))
-                                }
-                            } header: {
-                                Text(category)
-                                    .font(.system(size: FontSize.md, weight: .semibold))
-                                    .foregroundStyle(Theme.nudgeTextMuted)
-                            }
-                        }
-                    }
-                }
-                .listStyle(.plain)
-                .scrollContentBackground(.hidden)
+                CategoryListView(
+                    habitsByCategory: habitVM.habitsByCategory,
+                    onDelete: { habit in Task { await habitVM.deleteHabit(habit) } },
+                    onEdit: { habit in habitToEdit = habit }
+                )
 
                 TabBarView(selectedTab: $selectedTab)
             }
