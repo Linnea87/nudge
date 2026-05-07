@@ -15,7 +15,7 @@ struct WeeklyChartView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.sm) {
             Text(String(localized: "stats_chart_title"))
-                .font(.system(size: FontSize.xs))
+                .font(.system(size: FontSize.sm))
                 .foregroundStyle(Theme.nudgeTextMuted)
 
             Chart(data) { stat in

@@ -431,7 +431,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You showed up yesterday. That counts."
+            "value" : "You showed up yesterday. That counts"
           }
         }
       }
@@ -442,7 +442,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "One small step is still a step."
+            "value" : "One small step is still a step"
           }
         }
       }
@@ -453,7 +453,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "You're doing better than you think."
+            "value" : "You're doing better than you think"
           }
         }
       }

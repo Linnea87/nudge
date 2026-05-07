@@ -48,6 +48,8 @@ enum FontSize {
 // ====== Icon Size ===============
 
 enum IconSize {
+    
+    static let xs: CGFloat = 14
     static let sm: CGFloat = 16
     static let md: CGFloat = 20
     static let lg: CGFloat = 24
