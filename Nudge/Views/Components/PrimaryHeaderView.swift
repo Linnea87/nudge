@@ -12,7 +12,7 @@ struct PrimaryHeaderView: View {
     let title: String
     var titleIcon: String? = nil
     var subtitle: String? = nil
-    var subtitleIcon: String? = nil
+    var subtitleIcon: String = "heart"
     var onDismiss: (() -> Void)? = nil
     var onAdd: (() -> Void)? = nil
     var trailingText: String? = nil
@@ -37,11 +37,9 @@ struct PrimaryHeaderView: View {
                         Text(subtitle)
                             .font(.system(size: FontSize.sm))
                             .foregroundStyle(Theme.nudgeAccentSoft)
-                        if let subtitleIcon {
-                            Image(systemName: subtitleIcon)
-                                .font(.system(size: FontSize.xs))
-                                .foregroundStyle(Theme.nudgeAccentSoft)
-                        }
+                        Image(systemName: subtitleIcon)
+                            .font(.system(size: FontSize.xs))
+                            .foregroundStyle(Theme.nudgeAccentSoft)
                     }
                 }
             }
