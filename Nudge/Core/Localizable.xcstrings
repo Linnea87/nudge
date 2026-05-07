@@ -398,7 +398,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Manage my list"
+            "value" : "Every habit counts"
           }
         }
       }
@@ -420,7 +420,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "My habits"
+            "value" : "Start Small!"
           }
         }
       }
