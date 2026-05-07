@@ -10,6 +10,7 @@ import SwiftUI
 struct PrimaryHeaderView: View {
 
     let title: String
+    var titleIcon: String? = nil
     var subtitle: String? = nil
     var subtitleIcon: String? = nil
     var onDismiss: (() -> Void)? = nil
@@ -20,9 +21,16 @@ struct PrimaryHeaderView: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: Spacing.xs) {
-                Text(title)
-                    .font(.system(size: FontSize.display, weight: .bold))
-                    .foregroundStyle(Theme.nudgeTextPrimary)
+                HStack(spacing: Spacing.xs) {
+                    Text(title)
+                        .font(.system(size: FontSize.display, weight: .bold))
+                        .foregroundStyle(Theme.nudgeTextPrimary)
+                    if let titleIcon {
+                        Image(systemName: titleIcon)
+                            .font(.system(size: IconSize.md))
+                            .foregroundStyle(Theme.nudgeTextMuted)
+                    }
+                }
 
                 if let subtitle {
                     HStack(spacing: Spacing.xs) {
