@@ -28,11 +28,11 @@ struct PrimaryHeaderView: View {
                     HStack(spacing: Spacing.xs) {
                         Text(subtitle)
                             .font(.system(size: FontSize.sm))
-                            .foregroundStyle(Theme.nudgeTextMuted)
+                            .foregroundStyle(Theme.nudgeAccentSoft)
                         if let subtitleIcon {
                             Image(systemName: subtitleIcon)
                                 .font(.system(size: FontSize.xs))
-                                .foregroundStyle(Theme.nudgeTextMuted)
+                                .foregroundStyle(Theme.nudgeAccentSoft)
                         }
                     }
                 }
