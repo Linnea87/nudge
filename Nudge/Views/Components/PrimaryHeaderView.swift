@@ -10,8 +10,7 @@ import SwiftUI
 struct PrimaryHeaderView: View {
 
     let title: String
-    var titleIcon: String? = nil
-    var subtitle: String? = nil
+    let subtitle: String
     var subtitleIcon: String = "heart"
     var onDismiss: (() -> Void)? = nil
     var onAdd: (() -> Void)? = nil
@@ -21,26 +20,17 @@ struct PrimaryHeaderView: View {
     var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: Spacing.xs) {
-                HStack(spacing: Spacing.xs) {
-                    Text(title)
-                        .font(.system(size: FontSize.display, weight: .bold))
-                        .foregroundStyle(Theme.nudgeTextPrimary)
-                    if let titleIcon {
-                        Image(systemName: titleIcon)
-                            .font(.system(size: IconSize.md))
-                            .foregroundStyle(Theme.nudgeTextMuted)
-                    }
-                }
+                Text(title)
+                    .font(.system(size: FontSize.display, weight: .bold))
+                    .foregroundStyle(Theme.nudgeTextPrimary)
 
-                if let subtitle {
-                    HStack(spacing: Spacing.xs) {
-                        Text(subtitle)
-                            .font(.system(size: FontSize.sm))
-                            .foregroundStyle(Theme.nudgeAccentSoft)
-                        Image(systemName: subtitleIcon)
-                            .font(.system(size: FontSize.xs))
-                            .foregroundStyle(Theme.nudgeAccentSoft)
-                    }
+                HStack(spacing: Spacing.xs) {
+                    Text(subtitle)
+                        .font(.system(size: FontSize.sm))
+                        .foregroundStyle(Theme.nudgeAccentSoft)
+                    Image(systemName: subtitleIcon)
+                        .font(.system(size: FontSize.xs))
+                        .foregroundStyle(Theme.nudgeAccentSoft)
                 }
             }
 
