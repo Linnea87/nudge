@@ -30,7 +30,7 @@ struct HeroView: View {
                     .font(.system(size: FontSize.xl, weight: .bold))
                     .foregroundStyle(Theme.nudgeTextPrimary)
 
-                Text(memberSince)
+                Text("\(String(localized: "profile_member_since")) \(memberSince)")
                     .font(.system(size: FontSize.xs))
                     .foregroundStyle(Theme.nudgeTextMuted)
             }

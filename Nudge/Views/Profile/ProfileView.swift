@@ -36,16 +36,22 @@ struct ProfileView: View {
                             onSignOut: { authVM.signOut() }
                         )
 
-                        VStack(alignment: .leading, spacing: Spacing.xs) {
-                            Text(authVM.greetingMessage)
-                                .font(.system(size: FontSize.xxl, weight: .bold))
-                                .foregroundStyle(Theme.nudgeTextPrimary)
-
-                            Text(habitVM.motivationMessage)
-                                .font(.system(size: FontSize.sm))
-                                .foregroundStyle(Theme.nudgeAccentSoft)
+                        HStack(alignment: .top, spacing: Spacing.xs) {
+                            VStack(alignment: .leading, spacing: Spacing.xs) {
+                                HStack(spacing: Spacing.xs) {
+                                    Text(authVM.greetingMessage)
+                                        .font(.system(size: FontSize.xxl, weight: .bold))
+                                        .foregroundStyle(Theme.nudgeTextPrimary)
+                                    Image(systemName: authVM.greetingIcon)
+                                        .font(.system(size: IconSize.md))
+                                        .foregroundStyle(Theme.nudgeTextMuted)
+                                }
+                                Text(habitVM.motivationMessage)
+                                    .font(.system(size: FontSize.sm))
+                                    .foregroundStyle(Theme.nudgeAccentSoft)
+                            }
+                            Spacer()
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.top, Spacing.md)
 
                         ForEach(Categories.habitCategories, id: \.self) { category in
