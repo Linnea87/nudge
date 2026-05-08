@@ -18,6 +18,7 @@ enum Height {
     static let button: CGFloat = 56
     static let tabBar: CGFloat = 62
     static let chart: CGFloat = 120
+    static let logo: CGFloat = 340
 }
 
 //==== Corner Radius =============================================
