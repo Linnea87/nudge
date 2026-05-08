@@ -32,28 +32,6 @@
         }
       }
     },
-    "app_name" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nudge"
-          }
-        }
-      }
-    },
-    "app_tagline" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Small steps. Big life."
-          }
-        }
-      }
-    },
     "auth_signin_email" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -131,17 +109,6 @@
         }
       }
     },
-    "auth_signup_has_account" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Already have an account?"
-          }
-        }
-      }
-    },
     "auth_signup_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -149,17 +116,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your name"
-          }
-        }
-      }
-    },
-    "auth_signup_signin_link" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sign in"
           }
         }
       }
@@ -326,28 +282,6 @@
         }
       }
     },
-    "habits_created" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Created"
-          }
-        }
-      }
-    },
-    "habits_edit_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit habit"
-          }
-        }
-      }
-    },
     "habits_name_placeholder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -355,39 +289,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Name your habit…"
-          }
-        }
-      }
-    },
-    "habits_save" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save habit"
-          }
-        }
-      }
-    },
-    "habits_save_changes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save changes"
-          }
-        }
-      }
-    },
-    "habits_sessions_total" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "sessions total"
           }
         }
       }
@@ -458,28 +359,6 @@
         }
       }
     },
-    "profile_checkins_total" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "total check-ins"
-          }
-        }
-      }
-    },
-    "profile_done" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "done"
-          }
-        }
-      }
-    },
     "profile_member_since" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -502,17 +381,6 @@
         }
       }
     },
-    "profile_today" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Today"
-          }
-        }
-      }
-    },
     "stats_chart_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -520,17 +388,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Check-ins per day"
-          }
-        }
-      }
-    },
-    "stats_checkins" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "check-ins"
           }
         }
       }
@@ -565,17 +422,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "this week"
-          }
-        }
-      }
-    },
-    "stats_times_this_week" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "times this week"
           }
         }
       }
