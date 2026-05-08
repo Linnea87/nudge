@@ -9,6 +9,7 @@ struct HabitRowView: View {
     var onDelete: (() -> Void)? = nil
     var onEdit: (() -> Void)? = nil
     var weekCount: Int? = nil
+    var showStreak: Bool = false
 
     //==== Body =============================================
 
@@ -25,6 +26,17 @@ struct HabitRowView: View {
                     Text(habit.name)
                         .font(.system(size: FontSize.lg, weight: .semibold))
                         .foregroundStyle(Theme.nudgeTextPrimary)
+
+                    if showStreak, habit.currentStreak > 0 {
+                        HStack(spacing: 2) {
+                            Image(systemName: "heart")
+                                .font(.system(size: IconSize.xxs))
+                                .foregroundStyle(Theme.nudgeTextMuted)
+                            Text("\(habit.currentStreak) \(String(localized: "streak_days"))")
+                                .font(.system(size: FontSize.xs))
+                                .foregroundStyle(Theme.nudgeTextMuted)
+                        }
+                    }
                 }
 
                 Spacer()
