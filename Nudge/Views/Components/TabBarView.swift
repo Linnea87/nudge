@@ -38,7 +38,7 @@ struct TabBarView: View {
             }
         }
         .padding(Spacing.xs)
-        .frame(height: Spacing.tabBarHeight)
+        .frame(height: Height.tabBar)
         .background(Theme.nudgeSurface)
         .clipShape(Capsule())
         .padding(.horizontal, Spacing.lg)

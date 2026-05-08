@@ -32,7 +32,7 @@ struct WeeklyChartView: View {
                 )
                 .cornerRadius(Radius.sm)
             }
-            .frame(height: Spacing.chartHeight)
+            .frame(height: Height.chart)
             .chartXAxis {
                 AxisMarks { _ in
                     AxisValueLabel()
