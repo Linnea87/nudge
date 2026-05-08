@@ -72,7 +72,7 @@ Users with NPF want to:
 
 ### Audience
 
-Nudge is aimed at people with NPF/ADHD who want a habit tracker that works with their brain. The app is also suitable for anyone who finds traditional habit trackers stressful or discouraging.
+Nudge is aimed at people with NPF who want a habit tracker that works with their brain. The app is also suitable for anyone who finds traditional habit trackers stressful or discouraging.
 
 ### Communication
 
