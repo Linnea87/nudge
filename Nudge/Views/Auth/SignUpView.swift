@@ -26,7 +26,7 @@ struct SignUpView: View {
                     subtitle: String(localized: "auth_signup_subtitle")
                 )
 
-                VStack(spacing: Spacing.sm) {
+                VStack(spacing: Spacing.md) {
                     InputFieldView(
                         icon: "person",
                         key: "auth_signup_name",
