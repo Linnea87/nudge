@@ -17,10 +17,14 @@ enum Spacing {
     static let lg: CGFloat = 20
     static let xl: CGFloat = 24
     static let xxl: CGFloat = 32
+}
 
-    static let buttonHeight: CGFloat = 56
-    static let tabBarHeight: CGFloat = 62
-    static let chartHeight: CGFloat = 120
+// ====== Height ===============
+
+enum Height {
+    static let button: CGFloat = 56
+    static let tabBar: CGFloat = 62
+    static let chart: CGFloat = 120
 }
 
 // ====== Corner Radius ===============
@@ -48,13 +52,11 @@ enum FontSize {
 // ====== Icon Size ===============
 
 enum IconSize {
-    
     static let xs: CGFloat = 14
     static let sm: CGFloat = 16
     static let md: CGFloat = 20
     static let lg: CGFloat = 24
     static let xl: CGFloat = 32
-
     static let checkButton: CGFloat = 44
     static let profileAvatar: CGFloat = 56
     static let avatar: CGFloat = 72

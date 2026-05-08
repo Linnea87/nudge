@@ -27,7 +27,7 @@ struct PrimaryButtonView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-            .frame(height: Spacing.buttonHeight)
+            .frame(height: Height.button)
             .background(isDisabled ? Theme.nudgeTextMuted : Theme.nudgeAccent)
             .clipShape(RoundedRectangle(cornerRadius: Radius.full))
         }
