@@ -35,7 +35,8 @@ struct ProfileView: View {
 
                 CategoryListView(
                     habitsByCategory: habitVM.habitsByCategory,
-                    onCheckIn: { habit in Task { await habitVM.checkIn(habit) } }
+                    onCheckIn: { habit in Task { await habitVM.checkIn(habit) } },
+                    showStreak: true
                 )
 
                 TabBarView(selectedTab: $selectedTab)

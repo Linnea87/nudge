@@ -9,6 +9,7 @@ struct CategoryListView: View {
     var onDelete: ((Habit) -> Void)? = nil
     var onEdit: ((Habit) -> Void)? = nil
     var statsVM: StatsViewModel? = nil
+    var showStreak: Bool = false
 
     //==== Body =============================================
 
@@ -24,7 +25,8 @@ struct CategoryListView: View {
                                 onCheckIn: onCheckIn.map { action in { action(habit) } },
                                 onDelete: onDelete.map { action in { action(habit) } },
                                 onEdit: onEdit.map { action in { action(habit) } },
-                                weekCount: statsVM?.checkInsThisWeek(for: habit)
+                                weekCount: statsVM?.checkInsThisWeek(for: habit),
+                                showStreak: showStreak
                             )
                         }
                     } header: {
