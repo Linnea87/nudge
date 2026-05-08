@@ -18,28 +18,15 @@ struct SignInView: View {
             Theme.nudgeBackground
                 .ignoresSafeArea()
 
-            VStack(spacing: Spacing.xl) {
+            VStack(spacing: Spacing.lg) {
 
-                VStack(spacing: Spacing.sm) {
-                    ZStack {
-                        Circle()
-                            .fill(Theme.nudgeAccent)
-                            .frame(width: IconSize.avatar, height: IconSize.avatar)
-                        Image(systemName: "sparkles")
-                            .font(.system(size: IconSize.xl))
-                            .foregroundStyle(Theme.nudgeTextPrimary)
-                    }
-                    Text(String(localized: "app_name"))
-                        .font(.system(size: FontSize.xxl, weight: .bold))
-                        .foregroundStyle(Theme.nudgeTextPrimary)
-                    Text(String(localized: "app_tagline"))
-                        .font(.system(size: FontSize.sm))
-                        .foregroundStyle(Theme.nudgeTextMuted)
-                }
-                .padding(.top, Spacing.xxl)
-                .padding(.bottom, Spacing.xl)
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: Height.logo)
+                    
 
-                VStack(spacing: Spacing.sm) {
+                VStack(spacing: Spacing.md) {
                     InputFieldView(icon: "envelope", key: "auth_signin_email", text: $email)
                         .keyboardType(.emailAddress)
                         .autocorrectionDisabled()
