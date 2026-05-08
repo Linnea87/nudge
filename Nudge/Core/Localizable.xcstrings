@@ -304,7 +304,7 @@
         }
       }
     },
-    "habits_save_changes " : {
+    "habits_save_changes" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
