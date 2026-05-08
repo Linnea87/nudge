@@ -1,6 +1,6 @@
 # Nudge
 
-![Mockup](docs/nudge_mockup.png)
+![Mockup](docs/nudge_mockup-v2.png)
 
 ## Table of Contents
 - [UX](#ux)
