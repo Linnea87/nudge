@@ -1,10 +1,3 @@
-//
-//  SignInView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import SwiftUI
 
 struct SignInView: View {
@@ -27,8 +20,6 @@ struct SignInView: View {
 
             VStack(spacing: Spacing.xl) {
 
-                //==== Logo =============================================
-
                 VStack(spacing: Spacing.sm) {
                     ZStack {
                         Circle()
@@ -48,8 +39,6 @@ struct SignInView: View {
                 .padding(.top, Spacing.xxl)
                 .padding(.bottom, Spacing.xl)
 
-                //==== Form =============================================
-
                 VStack(spacing: Spacing.sm) {
                     InputFieldView(icon: "envelope", key: "auth_signin_email", text: $email)
                         .keyboardType(.emailAddress)
@@ -66,8 +55,6 @@ struct SignInView: View {
                     }
                 }
 
-                //==== Sign In Button =============================================
-
                 PrimaryButtonView(
                     label: String(localized: "auth_signin_title"),
                     isLoading: authVM.isLoading
@@ -78,8 +65,6 @@ struct SignInView: View {
                 }
 
                 Spacer()
-
-                //==== Sign Up Link =============================================
 
                 HStack(spacing: Spacing.xs) {
                     Text(String(localized: "auth_signin_no_account"))

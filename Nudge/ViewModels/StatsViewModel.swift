@@ -1,10 +1,3 @@
-//
-//  StatsViewModel.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import Foundation
 
 @Observable
@@ -40,13 +33,13 @@ final class StatsViewModel {
             return DayStat(date: date, count: count)
         }
     }
-    
+
     func statsMessage(for habits: [Habit]) -> String {
-           let total = totalCheckInsThisWeek(for: habits)
-           return total > 0
-               ? "\(total) \(String(localized: "stats_total"))"
-               : String(localized: "stats_no_checkins")
-       }
+        let total = totalCheckInsThisWeek(for: habits)
+        return total > 0
+            ? "\(total) \(String(localized: "stats_total"))"
+            : String(localized: "stats_no_checkins")
+    }
 
     //==== Private =============================================
 

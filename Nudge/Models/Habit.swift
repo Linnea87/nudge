@@ -1,13 +1,8 @@
-//
-//  Habit.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import Foundation
 
 struct Habit: Identifiable, Codable {
+
+    //==== Properties =============================================
 
     let id: String
     let userId: String

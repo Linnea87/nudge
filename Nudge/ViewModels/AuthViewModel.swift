@@ -1,10 +1,3 @@
-//
-//  AuthViewModel.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import FirebaseAuth
 import Foundation
 

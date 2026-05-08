@@ -1,12 +1,5 @@
-//
-//  HabitService.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-01.
-//
-
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 final class HabitService: HabitServiceProtocol {
 
@@ -34,7 +27,7 @@ final class HabitService: HabitServiceProtocol {
             .document(habit.id)
             .setData(from: habit)
     }
-    
+
     //==== Update =============================================
 
     func updateHabit(_ habit: Habit) async throws {
@@ -51,7 +44,7 @@ final class HabitService: HabitServiceProtocol {
             .delete()
     }
 
-    //==== Check-In =============================================
+    //==== Check In =============================================
 
     func checkIn(_ habit: Habit, on date: Date) async throws {
         let timestamp = Timestamp(date: date)
@@ -61,5 +54,4 @@ final class HabitService: HabitServiceProtocol {
                 "completedDates": FieldValue.arrayUnion([timestamp])
             ])
     }
-
 }
