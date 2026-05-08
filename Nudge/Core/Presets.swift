@@ -1,11 +1,6 @@
-//
-//  Symbols.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-05.
-//
-
 import Foundation
+
+//==== Symbols =============================================
 
 enum Symbols {
 
@@ -53,6 +48,7 @@ enum Symbols {
     ]
 }
 
+//==== Categories =============================================
 
 enum Categories {
     static let habitCategories = [

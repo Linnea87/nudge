@@ -1,10 +1,3 @@
-//
-//  SignUpView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import SwiftUI
 
 struct SignUpView: View {
@@ -28,14 +21,10 @@ struct SignUpView: View {
 
             VStack(spacing: Spacing.xxl) {
 
-                //==== Header =============================================
-
                 PrimaryHeaderView(
                     title: String(localized: "auth_signup_title"),
                     subtitle: String(localized: "auth_signup_subtitle")
                 )
-
-                //==== Form =============================================
 
                 VStack(spacing: Spacing.sm) {
                     InputFieldView(
@@ -62,8 +51,6 @@ struct SignUpView: View {
                         isSecure: true
                     )
                 }
-
-                //==== Create Account Button =============================================
 
                 VStack(spacing: Spacing.md) {
                     PrimaryButtonView(

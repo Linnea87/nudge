@@ -1,18 +1,15 @@
-//
-//  IconPickerView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import SwiftUI
 
 struct IconPickerView: View {
+
+    //==== Properties =============================================
 
     @Binding var selectedIcon: String
     @State private var isExpanded = false
 
     private let columns = Array(repeating: GridItem(.flexible()), count: 4)
+
+    //==== Body =============================================
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.sm) {

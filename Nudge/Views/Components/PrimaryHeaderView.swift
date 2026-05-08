@@ -1,13 +1,8 @@
-//
-//  PrimaryHeaderView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-06.
-//
-
 import SwiftUI
 
 struct PrimaryHeaderView: View {
+
+    //==== Properties =============================================
 
     let title: String
     let subtitle: String
@@ -16,6 +11,8 @@ struct PrimaryHeaderView: View {
     var onAdd: (() -> Void)? = nil
     var trailingText: String? = nil
     var trailingColor: Color = Theme.nudgeTextMuted
+
+    //==== Body =============================================
 
     var body: some View {
         HStack(alignment: .top) {

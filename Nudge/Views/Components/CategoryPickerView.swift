@@ -1,16 +1,13 @@
-//
-//  CategoryPickerView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-06.
-//
-
 import SwiftUI
 
 struct CategoryPickerView: View {
 
+    //==== Properties =============================================
+
     @Binding var selectedCategory: String
     @State private var isExpanded = false
+
+    //==== Body =============================================
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.sm) {
@@ -28,7 +25,8 @@ struct CategoryPickerView: View {
             if isExpanded {
                 PrimaryCardView {
                     VStack(spacing: Spacing.xs) {
-                        ForEach(Categories.habitCategories, id: \.self) { category in
+                        ForEach(Categories.habitCategories, id: \.self) {
+                            category in
                             Button {
                                 selectedCategory = category
                                 withAnimation {
@@ -38,7 +36,11 @@ struct CategoryPickerView: View {
                                 HStack {
                                     Text(category)
                                         .font(.system(size: FontSize.md))
-                                        .foregroundStyle(selectedCategory == category ? Theme.nudgeTextPrimary : Theme.nudgeTextMuted)
+                                        .foregroundStyle(
+                                            selectedCategory == category
+                                                ? Theme.nudgeTextPrimary
+                                                : Theme.nudgeTextMuted
+                                        )
                                     Spacer()
                                     if selectedCategory == category {
                                         Image(systemName: "checkmark")

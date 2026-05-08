@@ -1,15 +1,12 @@
-//
-//  PrimaryCardView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-06.
-//
-
 import SwiftUI
 
 struct PrimaryCardView<Content: View>: View {
 
+    //==== Properties =============================================
+
     @ViewBuilder let content: () -> Content
+
+    //==== Body =============================================
 
     var body: some View {
         content()

@@ -1,18 +1,15 @@
-//
-//  PickerHeaderView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-06.
-//
-
 import SwiftUI
 
 struct PickerHeaderView: View {
+
+    //==== Properties =============================================
 
     let label: String
     let isExpanded: Bool
     var leadingIcon: String? = nil
     let action: () -> Void
+
+    //==== Body =============================================
 
     var body: some View {
         Button(action: action) {

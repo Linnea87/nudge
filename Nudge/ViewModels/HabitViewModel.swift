@@ -1,10 +1,3 @@
-//
-//  HabitViewModel.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import Foundation
 
 @Observable
@@ -44,9 +37,9 @@ final class HabitViewModel {
         ]
         return messages[totalCheckIns % messages.count]
     }
-    
+
     var habitsByCategory: [String: [Habit]] {
-           Dictionary(grouping: habits, by: { $0.category })
+        Dictionary(grouping: habits, by: { $0.category })
     }
 
     //==== Fetch =============================================
@@ -63,8 +56,8 @@ final class HabitViewModel {
 
         isLoading = false
     }
-   
-   //==== Add =======================================
+
+    //==== Add =============================================
 
     func addHabit(name: String, icon: String, category: String, userId: String) async {
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty else {
@@ -88,8 +81,8 @@ final class HabitViewModel {
         } catch {
             errorMessage = String(localized: "error_save_failed")
         }
-   }
-    
+    }
+
     //==== Update =============================================
 
     func updateHabit(_ habit: Habit) async {
@@ -103,15 +96,15 @@ final class HabitViewModel {
         }
     }
 
-   //==== Delete =============================================
+    //==== Delete =============================================
 
     func deleteHabit(_ habit: Habit) async {
-          do {
-                try await habitService.deleteHabit(habit)
-                habits.removeAll { $0.id == habit.id }
-          } catch {
-                errorMessage = String(localized: "error_save_failed")
-          }
+        do {
+            try await habitService.deleteHabit(habit)
+            habits.removeAll { $0.id == habit.id }
+        } catch {
+            errorMessage = String(localized: "error_save_failed")
+        }
     }
 
     //==== Check In =============================================

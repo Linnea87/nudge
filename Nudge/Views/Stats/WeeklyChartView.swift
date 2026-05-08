@@ -1,16 +1,13 @@
-//
-//  WeeklyChartView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import Charts
 import SwiftUI
 
 struct WeeklyChartView: View {
 
+    //==== Properties =============================================
+
     let data: [DayStat]
+
+    //==== Body =============================================
 
     var body: some View {
         VStack(alignment: .leading, spacing: Spacing.sm) {

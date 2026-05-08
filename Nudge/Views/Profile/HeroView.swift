@@ -1,18 +1,15 @@
-//
-//  HeroView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-06.
-//
-
 import SwiftUI
 
 struct HeroView: View {
+
+    //==== Properties =============================================
 
     let userInitial: String
     let displayName: String
     let memberSince: String
     let onSignOut: () -> Void
+
+    //==== Body =============================================
 
     var body: some View {
         HStack(spacing: Spacing.md) {

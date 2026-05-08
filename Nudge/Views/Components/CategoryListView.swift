@@ -1,19 +1,16 @@
-//
-//  CategoryListView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-07.
-//
-
 import SwiftUI
 
 struct CategoryListView: View {
+
+    //==== Properties =============================================
 
     let habitsByCategory: [String: [Habit]]
     var onCheckIn: ((Habit) -> Void)? = nil
     var onDelete: ((Habit) -> Void)? = nil
     var onEdit: ((Habit) -> Void)? = nil
     var statsVM: StatsViewModel? = nil
+
+    //==== Body =============================================
 
     var body: some View {
         List {

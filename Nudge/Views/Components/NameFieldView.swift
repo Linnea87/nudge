@@ -1,15 +1,12 @@
-//
-//  NameFieldView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-06.
-//
-
 import SwiftUI
 
 struct NameFieldView: View {
 
+    //==== Properties =============================================
+
     @Binding var text: String
+
+    //==== Body =============================================
 
     var body: some View {
         HStack(spacing: Spacing.sm) {

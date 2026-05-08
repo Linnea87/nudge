@@ -1,13 +1,6 @@
-//
-//  Constants.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-04-28.
-//
-
 import Foundation
 
-// ====== Spacing ===============
+//==== Spacing =============================================
 
 enum Spacing {
     static let none: CGFloat = 0
@@ -19,7 +12,7 @@ enum Spacing {
     static let xxl: CGFloat = 32
 }
 
-// ====== Height ===============
+//==== Height =============================================
 
 enum Height {
     static let button: CGFloat = 56
@@ -27,7 +20,7 @@ enum Height {
     static let chart: CGFloat = 120
 }
 
-// ====== Corner Radius ===============
+//==== Corner Radius =============================================
 
 enum Radius {
     static let sm: CGFloat = 12
@@ -37,7 +30,7 @@ enum Radius {
     static let full: CGFloat = 999
 }
 
-// ====== Font Size ===============
+//==== Font Size =============================================
 
 enum FontSize {
     static let xs: CGFloat = 10
@@ -49,7 +42,7 @@ enum FontSize {
     static let display: CGFloat = 26
 }
 
-// ====== Icon Size ===============
+//==== Icon Size =============================================
 
 enum IconSize {
     static let xs: CGFloat = 14

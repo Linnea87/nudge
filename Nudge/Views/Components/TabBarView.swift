@@ -1,15 +1,12 @@
-//
-//  TabBarView.swift
-//  Nudge
-//
-//  Created by Linnéa on 2026-05-04.
-//
-
 import SwiftUI
 
 struct TabBarView: View {
 
+    //==== Properties =============================================
+
     @Binding var selectedTab: Tab
+
+    //==== Body =============================================
 
     var body: some View {
         HStack(spacing: 0) {
@@ -51,10 +48,14 @@ struct TabBarView: View {
 
 private struct TabBarButton: View {
 
+    //==== Properties =============================================
+
     let icon: String
     let label: String
     let isSelected: Bool
     let action: () -> Void
+
+    //==== Body =============================================
 
     var body: some View {
         Button(action: action) {
