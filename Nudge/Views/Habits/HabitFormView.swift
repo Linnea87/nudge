@@ -39,8 +39,8 @@ struct HabitFormView: View {
                 ScrollView {
                     VStack(spacing: Spacing.lg) {
                         PrimaryHeaderView(
-                            title: String(localized: isEditing ? "habits_edit_title" : "habits_title"),
-                            subtitle: String(localized: "habits_add_placeholder"),
+                            title: String(localized: "habits_title"),
+                            subtitle: String(localized: isEditing ? "habits_edit_subtitle" : "habits_add_placeholder"),
                             onDismiss: { dismiss() }
                         )
 
