@@ -293,6 +293,28 @@
         }
       }
     },
+    "habits_save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save habit"
+          }
+        }
+      }
+    },
+    "habits_save_changes " : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save changes"
+          }
+        }
+      }
+    },
     "habits_subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
