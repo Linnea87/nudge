@@ -25,12 +25,6 @@ struct HabitRowView: View {
                     Text(habit.name)
                         .font(.system(size: FontSize.lg, weight: .semibold))
                         .foregroundStyle(Theme.nudgeTextPrimary)
-
-                    if let weekCount {
-                        Text("\(weekCount) \(String(localized: "stats_times_this_week"))")
-                            .font(.system(size: FontSize.xs))
-                            .foregroundStyle(Theme.nudgeTextMuted)
-                    }
                 }
 
                 Spacer()
@@ -49,14 +43,19 @@ struct HabitRowView: View {
                     .disabled(habit.isCompletedToday)
                 }
 
-                if let weekCount {
-                    ZStack {
-                        Circle()
-                            .fill(weekCount > 0 ? Theme.nudgeSuccess.opacity(0.15) : Theme.nudgeCard)
-                            .frame(width: IconSize.xl, height: IconSize.xl)
-                        Text("\(weekCount)")
-                            .font(.system(size: FontSize.sm, weight: .bold))
-                            .foregroundStyle(weekCount > 0 ? Theme.nudgeSuccess : Theme.nudgeTextMuted)
+                if let weekCount, weekCount > 0 {
+                    VStack(spacing: 2) {
+                        ZStack {
+                            Circle()
+                                .fill(Theme.nudgeSuccess.opacity(0.15))
+                                .frame(width: IconSize.xl, height: IconSize.xl)
+                            Text("\(weekCount)")
+                                .font(.system(size: FontSize.sm, weight: .bold))
+                                .foregroundStyle(Theme.nudgeSuccess)
+                        }
+                        Text(String(localized: "stats_this_week"))
+                            .font(.system(size: FontSize.xs))
+                            .foregroundStyle(Theme.nudgeTextMuted)
                     }
                 }
             }
